@@ -1,11 +1,17 @@
-import React from 'react';
+import React, { useState } from 'react';
 import {
   FaShoppingCart,
   FaTooth,
   FaQrcode,
   FaCar,
   FaSeedling,
-  FaBoxes
+  FaBoxes,
+  FaExternalLinkAlt,
+  FaGithub,
+  FaRocket,
+  FaPassport,
+  FaRobot,
+  FaShieldAlt
 } from 'react-icons/fa';
 import { motion } from 'framer-motion';
 import Maria from "../assets/Maria.png";
@@ -29,8 +35,21 @@ import lost from "../assets/loast and found.jpg";
 import gradlink from "../assets/gradlink.jpg";
 import ai from "../assets/ai-ama.jpg";
 import scheduling from "../assets/scheduling-ssytem.jpg";
+import visa from "../assets/visa.png";
+import posWeb from "../assets/pos-web.png";
+import ucc from "../assets/ucc.png";
+import med from "../assets/med.png";
 
 const Projects = () => {
+  const [expandedProjects, setExpandedProjects] = useState({});
+
+  const toggleExpanded = (projectId) => {
+    setExpandedProjects(prev => ({
+      ...prev,
+      [projectId]: !prev[projectId]
+    }));
+  };
+
   const projects = [
     {
       id: 1,
@@ -143,24 +162,83 @@ const Projects = () => {
       image: scheduling,
       icon: <FaBoxes className="text-blue-400" size={24} />,
       tags: ["PHP", "Laravel", "Tailwind CSS", "JavaScript", "SQL"]
+    },
+    {
+      id: 15,
+      title: "Visa Powered by AI",
+      description: "A revolutionary MERN stack visa application system with AI-powered security features, real-time processing, and intelligent fraud detection capabilities. Features secure registration, credential validation, and threat detection.",
+      image: visa,
+      icon: <FaRobot className="text-blue-400" size={24} />,
+      tags: ["MongoDB", "Express.js", "React", "Node.js", "TensorFlow.js", "AI", "JWT"]
+    },
+    {
+      id: 16,
+      title: "MERN Stack POS System",
+      description: "A comprehensive Point of Sale system built with MERN stack and Sass for styling. Features real-time inventory management, sales tracking, customer management, and advanced reporting with responsive design and modern UI/UX. Includes barcode scanning, receipt printing, and multi-store support.",
+      image: posWeb,
+      icon: <FaShoppingCart className="text-green-400" size={24} />,
+      tags: ["MongoDB", "Express.js", "React", "Node.js", "Sass", "Redux", "Socket.io", "Barcode"]
+    },
+    {
+      id: 17,
+      title: "UCC School Clinic with AI",
+      description: "A comprehensive school clinic management system with AI integration for health monitoring and predictive analytics. Built with React, TypeScript, and Firebase, featuring appointment scheduling, medical records management, AI-powered health insights, and real-time notifications for parents and staff.",
+      image: ucc,
+      icon: <FaTooth className="text-blue-400" size={24} />,
+      tags: ["React", "TypeScript", "Firebase", "AI/ML", "Healthcare", "Real-time", "Analytics"]
+    },
+    {
+      id: 18,
+      title: "Philippine Pharmacy Franchising System",
+      description: "A comprehensive franchising management system for pharmacy chains in the Philippines. Built with Native PHP, MySQL, and Bootstrap, featuring franchise management, inventory tracking, sales analytics, multi-store operations, and automated reporting for franchise owners and administrators.",
+      image: med,
+      icon: <FaSeedling className="text-green-400" size={24} />,
+      tags: ["Native PHP", "MySQL", "Bootstrap", "Franchising", "Pharmacy", "Analytics", "Multi-store"]
     }
   ];
 
   return (
-    <div name="project" className="w-full py-20 bg-gray-900">
-      <div className="section-container">
+    <div name="project" className="relative w-full py-20 bg-gradient-to-b from-gray-900 via-indigo-900/10 to-gray-900">
+      {/* Background decorations */}
+      <div className="absolute inset-0 overflow-hidden">
+        <div className="absolute top-60 left-32 w-96 h-96 bg-indigo-500/10 rounded-full blur-3xl animate-pulse-glow" />
+        <div className="absolute bottom-60 right-32 w-80 h-80 bg-purple-500/10 rounded-full blur-3xl animate-pulse-glow" style={{ animationDelay: '4s' }} />
+      </div>
+      
+      <div className="section-container relative z-10">
         <motion.div 
           initial={{ opacity: 0, y: 20 }}
           whileInView={{ opacity: 1, y: 0 }}
           transition={{ duration: 0.5 }}
           viewport={{ once: true }}
-          className="max-w-3xl mx-auto text-center mb-16"
+          className="max-w-4xl mx-auto text-center mb-16"
         >
-          <h2 className="heading-primary">Projects</h2>
-          <p className="paragraph">
+          <motion.div
+            initial={{ opacity: 0, scale: 0.8 }}
+            whileInView={{ opacity: 1, scale: 1 }}
+            transition={{ duration: 0.5, delay: 0.2 }}
+            viewport={{ once: true }}
+            className="mb-6"
+          >
+            <h2 className="heading-primary mb-4">
+              <span className="flex items-center justify-center gap-3">
+                <FaRocket className="text-blue-500" />
+                <span className="text-gradient animate-gradient">Projects</span>
+                <FaRocket className="text-purple-500" />
+              </span>
+            </h2>
+          </motion.div>
+          
+          <motion.p 
+            initial={{ opacity: 0, y: 20 }}
+            whileInView={{ opacity: 1, y: 0 }}
+            transition={{ duration: 0.5, delay: 0.4 }}
+            viewport={{ once: true }}
+            className="paragraph max-w-3xl mx-auto"
+          >
             Here are some of my recent projects that showcase my skills and experience
             in web development and system design.
-          </p>
+          </motion.p>
         </motion.div>
 
         <motion.div 
@@ -168,68 +246,150 @@ const Projects = () => {
           whileInView={{ opacity: 1 }}
           transition={{ duration: 0.5, delay: 0.2 }}
           viewport={{ once: true }}
-          className="grid grid-cols-1 md:grid-cols-2 gap-8 max-w-6xl mx-auto"
+          className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8 max-w-7xl mx-auto"
         >
           {projects.map((project, index) => (
             <motion.div
               key={project.id}
               initial={{ opacity: 0, y: 30 }}
               whileInView={{ opacity: 1, y: 0 }}
-              transition={{ duration: 0.5, delay: index * 0.1 + 0.3 }}
+              transition={{ duration: 0.5, delay: index * 0.05 + 0.3 }}
               viewport={{ once: true }}
-              className="card group hover:transform hover:scale-105 transition-all duration-300 bg-gray-800 rounded-xl overflow-hidden shadow-xl"
+              className="glass group hover-lift rounded-xl overflow-hidden shadow-xl"
+              whileHover={{ y: -8 }}
             >
+              {/* Enhanced Image Container */}
               <motion.div 
                 initial={{ opacity: 0, scale: 0.8 }}
                 whileInView={{ opacity: 1, scale: 1 }}
-                transition={{ duration: 0.5, delay: index * 0.1 + 0.4 }}
+                transition={{ duration: 0.5, delay: index * 0.05 + 0.4 }}
                 viewport={{ once: true }}
-                className="relative overflow-hidden h-56"
+                className="relative overflow-hidden h-48 bg-gradient-to-br from-gray-800 to-gray-700"
               >
                 <img
                   src={project.image}
                   alt={project.title}
-                  className="w-full h-full object-cover transform group-hover:scale-110 transition-transform duration-300"
+                  className="w-full h-full object-cover transform group-hover:scale-110 transition-transform duration-500"
                 />
-                <div className="absolute inset-0 bg-gradient-to-t from-gray-900 to-transparent opacity-0 group-hover:opacity-70 transition-opacity duration-300" />
+                
+                {/* Enhanced overlay with actions */}
+                <motion.div 
+                  initial={{ opacity: 0 }}
+                  whileHover={{ opacity: 1 }}
+                  transition={{ duration: 0.3 }}
+                  className="absolute inset-0 bg-gradient-to-t from-gray-900/90 via-gray-900/50 to-transparent flex items-center justify-center gap-4"
+                >
+                  <motion.button
+                    whileHover={{ scale: 1.1 }}
+                    whileTap={{ scale: 0.9 }}
+                    className="p-3 bg-blue-500/20 backdrop-blur-sm rounded-full border border-blue-500/50 text-blue-400 hover:bg-blue-500/30 transition-colors"
+                  >
+                    <FaExternalLinkAlt size={16} />
+                  </motion.button>
+                  <motion.button
+                    whileHover={{ scale: 1.1 }}
+                    whileTap={{ scale: 0.9 }}
+                    className="p-3 bg-purple-500/20 backdrop-blur-sm rounded-full border border-purple-500/50 text-purple-400 hover:bg-purple-500/30 transition-colors"
+                  >
+                    <FaGithub size={16} />
+                  </motion.button>
+                </motion.div>
+                
+                {/* Project number badge */}
+                <div className="absolute top-4 right-4 w-8 h-8 bg-blue-500/20 backdrop-blur-sm rounded-full border border-blue-500/50 flex items-center justify-center text-blue-400 text-sm font-bold">
+                  {project.id}
+                </div>
               </motion.div>
 
-              <div className="p-8">
+              {/* Enhanced Content */}
+              <div className="p-6">
                 <motion.div 
                   initial={{ opacity: 0, x: -20 }}
                   whileInView={{ opacity: 1, x: 0 }}
-                  transition={{ duration: 0.5, delay: index * 0.1 + 0.5 }}
+                  transition={{ duration: 0.5, delay: index * 0.05 + 0.5 }}
                   viewport={{ once: true }}
-                  className="flex items-center gap-3 mb-4"
+                  className="flex items-center gap-3 mb-3"
                 >
-                  {project.icon}
-                  <h3 className="text-2xl font-bold text-white">{project.title}</h3>
+                  <motion.div
+                    whileHover={{ rotate: 15, scale: 1.1 }}
+                    transition={{ duration: 0.2 }}
+                    className="text-blue-500"
+                  >
+                    {project.icon}
+                  </motion.div>
+                  <h3 className="text-xl font-bold text-white group-hover:text-blue-400 transition-colors line-clamp-1">
+                    {project.title}
+                  </h3>
                 </motion.div>
 
-                <motion.p 
+                <motion.div 
                   initial={{ opacity: 0 }}
                   whileInView={{ opacity: 1 }}
-                  transition={{ duration: 0.5, delay: index * 0.1 + 0.6 }}
+                  transition={{ duration: 0.5, delay: index * 0.05 + 0.6 }}
                   viewport={{ once: true }}
-                  className="text-gray-300 mb-6 line-clamp-3 text-lg"
+                  className="mb-4"
                 >
-                  {project.description}
-                </motion.p>
+                  <p className={`text-gray-300 text-sm leading-relaxed ${
+                    expandedProjects[project.id] ? '' : 'line-clamp-2'
+                  }`}>
+                    {project.description}
+                  </p>
+                  
+                  {/* Read More/Read Less Button */}
+                  {project.description.length > 150 && (
+                    <motion.button
+                      onClick={() => toggleExpanded(project.id)}
+                      whileHover={{ scale: 1.05 }}
+                      whileTap={{ scale: 0.95 }}
+                      className="text-blue-400 text-sm font-medium hover:text-blue-300 transition-colors mt-2 flex items-center gap-1"
+                    >
+                      {expandedProjects[project.id] ? (
+                        <>
+                          <span>Read Less</span>
+                          <motion.div
+                            animate={{ rotate: 180 }}
+                            transition={{ duration: 0.3 }}
+                          >
+                            <FaRocket size={12} />
+                          </motion.div>
+                        </>
+                      ) : (
+                        <>
+                          <span>Read More</span>
+                          <FaRocket size={12} />
+                        </>
+                      )}
+                    </motion.button>
+                  )}
+                </motion.div>
 
+                {/* Enhanced tags with better layout */}
                 <div className="flex flex-wrap gap-2">
-                  {project.tags.map((tag, tagIndex) => (
+                  {project.tags.slice(0, 3).map((tag, tagIndex) => (
                     <motion.span
                       key={tagIndex}
                       initial={{ opacity: 0, scale: 0.8 }}
                       whileInView={{ opacity: 1, scale: 1 }}
-                      transition={{ duration: 0.3, delay: index * 0.1 + tagIndex * 0.1 + 0.7 }}
+                      transition={{ duration: 0.3, delay: index * 0.05 + tagIndex * 0.05 + 0.7 }}
                       viewport={{ once: true }}
-                      className="px-4 py-2 bg-blue-500/10 text-blue-400 text-sm rounded-full
-                               border border-blue-500/20 hover:bg-blue-500/20 transition-colors duration-300"
+                      whileHover={{ scale: 1.05, y: -1 }}
+                      className="px-2 py-1 bg-gradient-to-r from-blue-500/10 to-purple-500/10 text-blue-400 text-xs rounded-full
+                               border border-blue-500/20 hover:border-blue-400/50 transition-all duration-300 cursor-default"
                     >
                       {tag}
                     </motion.span>
                   ))}
+                  {project.tags.length > 3 && (
+                    <motion.span
+                      initial={{ opacity: 0 }}
+                      whileInView={{ opacity: 1 }}
+                      transition={{ duration: 0.3, delay: index * 0.05 + 0.8 }}
+                      viewport={{ once: true }}
+                      className="px-2 py-1 bg-gray-700/50 text-gray-400 text-xs rounded-full"
+                    >
+                      +{project.tags.length - 3}
+                    </motion.span>
+                  )}
                 </div>
               </div>
             </motion.div>

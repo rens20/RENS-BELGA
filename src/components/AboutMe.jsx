@@ -1,5 +1,5 @@
 import React from 'react';
-import { FaCode, FaServer, FaMobile, FaDatabase } from 'react-icons/fa';
+import { FaCode, FaServer, FaMobile, FaDatabase, FaRocket, FaLightbulb } from 'react-icons/fa';
 import { motion } from 'framer-motion';
 import Me from "../assets/Me.jpg";
 import Background from '../assets/Home-bg.jpg';
@@ -53,23 +53,52 @@ const AboutMe = () => {
   ];
 
   return (
-    <div name="about" className="w-full py-20 bg-gray-900">
-      <div className="section-container">
+    <div name="about" className="relative w-full py-20 bg-gradient-to-br from-gray-900 via-purple-900/10 to-gray-900">
+      {/* Background decorations */}
+      <div className="absolute inset-0 overflow-hidden">
+        <div className="absolute top-40 right-20 w-64 h-64 bg-purple-500/10 rounded-full blur-3xl animate-pulse-glow" />
+        <div className="absolute bottom-40 left-20 w-80 h-80 bg-blue-500/10 rounded-full blur-3xl animate-pulse-glow" style={{ animationDelay: '3s' }} />
+      </div>
+      
+      <div className="section-container relative z-10">
         <motion.div 
           initial={{ opacity: 0, y: 20 }}
           whileInView={{ opacity: 1, y: 0 }}
           transition={{ duration: 0.5 }}
           viewport={{ once: true }}
-          className="max-w-3xl mx-auto text-center mb-16"
+          className="max-w-4xl mx-auto text-center mb-16"
         >
-          <h2 className="heading-primary">About Me</h2>
-          <p className="paragraph">
-            I am a dedicated full-stack developer with a passion for creating elegant solutions
-            to complex problems. With a strong foundation in both frontend and backend technologies,
-            I strive to build scalable and maintainable applications that provide exceptional user experiences.
-          </p>
+          <motion.div
+            initial={{ opacity: 0, scale: 0.8 }}
+            whileInView={{ opacity: 1, scale: 1 }}
+            transition={{ duration: 0.5, delay: 0.2 }}
+            viewport={{ once: true }}
+            className="mb-6"
+          >
+            <h2 className="heading-primary mb-4">
+              <span className="text-gradient animate-gradient">About Me</span>
+            </h2>
+          </motion.div>
+          
+          <motion.div
+            initial={{ opacity: 0, y: 20 }}
+            whileInView={{ opacity: 1, y: 0 }}
+            transition={{ duration: 0.5, delay: 0.4 }}
+            viewport={{ once: true }}
+            className="max-w-3xl mx-auto"
+          >
+            <p className="paragraph text-gray-300 mb-4">
+              I am a dedicated full-stack developer with a passion for creating elegant solutions
+              to complex problems.
+            </p>
+            <p className="paragraph text-gray-400">
+              With a strong foundation in both frontend and backend technologies,
+              I strive to build scalable and maintainable applications that provide exceptional user experiences.
+            </p>
+          </motion.div>
         </motion.div>
 
+        {/* Enhanced Skills Section */}
         <motion.div 
           initial={{ opacity: 0 }}
           whileInView={{ opacity: 1 }}
@@ -80,52 +109,111 @@ const AboutMe = () => {
           {skills.map((skill, index) => (
             <motion.div
               key={skill.id}
-              initial={{ opacity: 0, y: 20 }}
+              initial={{ opacity: 0, y: 30 }}
               whileInView={{ opacity: 1, y: 0 }}
               transition={{ duration: 0.5, delay: index * 0.1 + 0.3 }}
               viewport={{ once: true }}
-              className="card group"
+              className="glass group hover-lift"
+              whileHover={{ y: -5 }}
             >
-              <div className="flex items-center mb-4">
+              <div className="flex items-start gap-4">
                 <motion.div 
-                  initial={{ scale: 0 }}
-                  whileInView={{ scale: 1 }}
-                  transition={{ duration: 0.5, delay: index * 0.1 + 0.4 }}
+                  initial={{ scale: 0, rotate: -180 }}
+                  whileInView={{ scale: 1, rotate: 0 }}
+                  transition={{ duration: 0.5, delay: index * 0.1 + 0.4, type: "spring" }}
                   viewport={{ once: true }}
-                  className="text-blue-500 mr-4 group-hover:text-blue-400 transition-colors duration-300"
+                  className="text-blue-500 p-4 rounded-xl bg-blue-500/10 border border-blue-500/20 group-hover:bg-blue-500/20 group-hover:scale-110 transition-all duration-300 flex-shrink-0"
                 >
                   {skill.icon}
                 </motion.div>
-                <h3 className="text-xl font-semibold text-white">{skill.title}</h3>
+                <div className="flex-1">
+                  <h3 className="text-xl font-semibold text-white mb-3 group-hover:text-blue-400 transition-colors">
+                    {skill.title}
+                  </h3>
+                  <p className="text-gray-300 leading-relaxed">{skill.description}</p>
+                </div>
               </div>
-              <p className="text-gray-400">{skill.description}</p>
+              
+              {/* Progress indicator */}
+              <motion.div 
+                initial={{ width: 0 }}
+                whileInView={{ width: '100%' }}
+                transition={{ duration: 0.8, delay: index * 0.1 + 0.6 }}
+                viewport={{ once: true }}
+                className="mt-4 h-1 bg-gradient-to-r from-blue-500 to-purple-500 rounded-full"
+              />
             </motion.div>
           ))}
         </motion.div>
 
+        {/* Enhanced Tech Stack Section */}
         <motion.div 
           initial={{ opacity: 0, y: 20 }}
           whileInView={{ opacity: 1, y: 0 }}
           transition={{ duration: 0.5, delay: 0.6 }}
           viewport={{ once: true }}
-          className="mt-16 text-center"
+          className="mt-20 text-center"
         >
-          <h3 className="heading-primary mb-8">TechStack</h3>
-          <div className="flex flex-wrap justify-center gap-4">
+          <motion.div
+            initial={{ opacity: 0, scale: 0.8 }}
+            whileInView={{ opacity: 1, scale: 1 }}
+            transition={{ duration: 0.5, delay: 0.8 }}
+            viewport={{ once: true }}
+            className="mb-8"
+          >
+            <h3 className="heading-primary mb-4">
+              <span className="flex items-center justify-center gap-3">
+                <FaRocket className="text-blue-500" />
+                <span className="text-gradient animate-gradient">Tech Stack</span>
+                <FaLightbulb className="text-yellow-500" />
+              </span>
+            </h3>
+          </motion.div>
+          
+          <div className="flex flex-wrap justify-center gap-3">
             {technicalSkills.map((skill, index) => (
               <motion.span
                 key={index}
-                initial={{ opacity: 0, scale: 0.8 }}
-                whileInView={{ opacity: 1, scale: 1 }}
-                transition={{ duration: 0.3, delay: index * 0.1 + 0.7 }}
+                initial={{ opacity: 0, scale: 0.8, rotate: -10 }}
+                whileInView={{ opacity: 1, scale: 1, rotate: 0 }}
+                transition={{ duration: 0.3, delay: index * 0.05 + 0.9, type: "spring" }}
                 viewport={{ once: true }}
-                className="px-4 py-2 bg-gray-800 text-white rounded-full text-sm font-medium
-                         border border-gray-700 hover:border-blue-500 transition duration-300"
+                whileHover={{ scale: 1.1, y: -3, rotate: 5 }}
+                className="px-4 py-2 bg-gradient-to-r from-gray-800/50 to-gray-700/50 text-white rounded-full text-sm font-medium
+                         border border-gray-600/50 hover:border-blue-500/50 hover:from-blue-500/10 hover:to-purple-500/10 transition-all duration-300 cursor-default shadow-lg hover:shadow-blue-500/20"
               >
                 {skill}
               </motion.span>
             ))}
           </div>
+          
+          {/* Additional stats */}
+          <motion.div
+            initial={{ opacity: 0, y: 20 }}
+            whileInView={{ opacity: 1, y: 0 }}
+            transition={{ duration: 0.5, delay: 1.2 }}
+            viewport={{ once: true }}
+            className="mt-12 grid grid-cols-1 sm:grid-cols-3 gap-6 max-w-2xl mx-auto"
+          >
+            {[
+              { number: "3+", label: "Years Experience" },
+              { number: "50+", label: "Projects Completed" },
+              { number: "15+", label: "Technologies" }
+            ].map((stat, index) => (
+              <motion.div
+                key={index}
+                initial={{ opacity: 0, scale: 0.8 }}
+                whileInView={{ opacity: 1, scale: 1 }}
+                transition={{ duration: 0.3, delay: 1.3 + index * 0.1 }}
+                viewport={{ once: true }}
+                whileHover={{ scale: 1.05 }}
+                className="glass p-4 rounded-xl text-center"
+              >
+                <div className="text-2xl font-bold text-blue-400 mb-1">{stat.number}</div>
+                <div className="text-sm text-gray-400">{stat.label}</div>
+              </motion.div>
+            ))}
+          </motion.div>
         </motion.div>
       </div>
     </div>
