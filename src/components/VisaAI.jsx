@@ -19,7 +19,7 @@ import {
 const VisaAI = () => {
   const features = [
     {
-      icon: <FaRobot className="text-blue-400" size={24} />,
+      icon: <FaBrain className="text-green-400" size={24} />,
       title: "AI-Powered Security",
       description: "Advanced AI algorithms validate credentials and detect threats in real-time"
     },
@@ -29,40 +29,40 @@ const VisaAI = () => {
       description: "Multi-layer authentication process with biometric verification"
     },
     {
-      icon: <FaClock className="text-purple-400" size={24} />,
+      icon: <FaClock className="text-green-400" size={24} />,
       title: "Real-time Processing",
       description: "Instant application processing with AI-driven decision making"
     },
     {
-      icon: <FaUserShield className="text-yellow-400" size={24} />,
+      icon: <FaUserShield className="text-green-400" size={24} />,
       title: "Fraud Detection",
       description: "Machine learning models identify and prevent fraudulent applications"
     }
   ];
 
   const visaCategories = [
-    { name: "Study Abroad", icon: <FaPassport />, color: "text-blue-500" },
+    { name: "Study Abroad", icon: <FaPassport />, color: "text-green-500" },
     { name: "Work Visa", icon: <FaBriefcase />, color: "text-green-500" },
-    { name: "Tourist Visa", icon: <FaPlane />, color: "text-purple-500" },
-    { name: "PR & Immigration", icon: <FaGlobe />, color: "text-red-500" },
-    { name: "Visa Consultation", icon: <FaUsers />, color: "text-yellow-500" }
+    { name: "Tourist Visa", icon: <FaPlane />, color: "text-green-500" },
+    { name: "PR & Immigration", icon: <FaGlobe />, color: "text-green-500" },
+    { name: "Visa Consultation", icon: <FaUsers />, color: "text-green-500" }
   ];
 
   const stats = [
     { value: "99.9%", label: "Uptime", icon: <FaCheckCircle className="text-green-400" /> },
-    { value: "10,000+", label: "Users Protected", icon: <FaUsers className="text-blue-400" /> },
-    { value: "256-bit", label: "Encryption", icon: <FaLock className="text-purple-400" /> },
-    { value: "Real-time", label: "AI Monitoring", icon: <FaBrain className="text-red-400" /> }
+    { value: "10,000+", label: "Users Protected", icon: <FaUsers className="text-green-400" /> },
+    { value: "256-bit", label: "Encryption", icon: <FaLock className="text-green-400" /> },
+    { value: "Real-time", label: "AI Monitoring", icon: <FaBrain className="text-green-400" /> }
   ];
 
   const techStack = ["MongoDB", "Express.js", "React", "Node.js", "TensorFlow.js", "JWT", "bcrypt", "Socket.io", "Redux", "Tailwind CSS"];
 
   return (
-    <div name="visa-ai" className="relative w-full py-20 bg-gradient-to-br from-gray-900 via-blue-900/20 to-gray-900">
+    <div name="visa-ai" className="relative w-full py-20 bg-gradient-to-br from-gray-900 via-green-900/20 to-gray-900">
       {/* Background decorations */}
       <div className="absolute inset-0 overflow-hidden">
-        <div className="absolute top-40 right-20 w-96 h-96 bg-blue-500/10 rounded-full blur-3xl animate-pulse-glow" />
-        <div className="absolute bottom-40 left-20 w-80 h-80 bg-purple-500/10 rounded-full blur-3xl animate-pulse-glow" style={{ animationDelay: '3s' }} />
+        <div className="absolute top-40 right-20 w-96 h-96 bg-green-500/10 rounded-full blur-3xl animate-pulse-glow" />
+        <div className="absolute bottom-40 left-20 w-80 h-80 bg-emerald-500/10 rounded-full blur-3xl animate-pulse-glow" style={{ animationDelay: '3s' }} />
         <div className="absolute top-60 left-1/2 w-64 h-64 bg-green-500/10 rounded-full blur-3xl animate-pulse-glow" style={{ animationDelay: '5s' }} />
       </div>
 
@@ -84,9 +84,9 @@ const VisaAI = () => {
           >
             <h2 className="heading-primary mb-4">
               <span className="flex items-center justify-center gap-3">
-                <FaPassport className="text-blue-500" />
-                <span className="text-gradient animate-gradient">Visa Powered by AI</span>
-                <FaRobot className="text-purple-500" />
+                <FaPassport className="text-green-500" />
+                <span className="text-green-500">Visa Powered by AI</span>
+                <FaRobot className="text-emerald-500" />
               </span>
             </h2>
           </motion.div>
@@ -140,7 +140,7 @@ const VisaAI = () => {
                   transition={{ duration: 0.3, delay: 0.1 + index * 0.1 }}
                   viewport={{ once: true }}
                   whileHover={{ scale: 1.05, y: -2 }}
-                  className="flex items-center gap-3 p-3 bg-gray-800/50 rounded-lg border border-gray-700/50 hover:border-blue-500/50 transition-all cursor-pointer"
+                  className="flex items-center gap-3 p-3 bg-gray-800/50 rounded-lg border border-gray-700/50 hover:border-green-500/50 transition-all cursor-pointer"
                 >
                   <div className={`${category.color}`}>
                     {category.icon}
@@ -162,7 +162,7 @@ const VisaAI = () => {
                     transition={{ duration: 0.3, delay: 0.5 + index * 0.05 }}
                     viewport={{ once: true }}
                     whileHover={{ scale: 1.1, y: -1 }}
-                    className="px-2 py-1 bg-gradient-to-r from-blue-500/10 to-purple-500/10 text-blue-400 text-xs rounded-full border border-blue-500/20"
+                    className="px-2 py-1 bg-gradient-to-r from-green-500/10 to-emerald-500/10 text-green-400 text-xs rounded-full border border-green-500/20"
                   >
                     {tech}
                   </motion.span>
@@ -177,7 +177,7 @@ const VisaAI = () => {
             whileInView={{ opacity: 1, x: 0 }}
             transition={{ duration: 0.5, delay: 1 }}
             viewport={{ once: true }}
-            className="bg-gradient-to-br from-blue-600 to-blue-800 rounded-2xl p-8 text-white hover-lift"
+            className="bg-gradient-to-br from-green-600 to-green-800 rounded-2xl p-8 text-white hover-lift"
           >
             <motion.div
               initial={{ opacity: 0, scale: 0.8 }}
@@ -187,7 +187,7 @@ const VisaAI = () => {
               className="mb-6"
             >
               <h3 className="text-3xl font-bold mb-2">AI-POWERED SECURITY</h3>
-              <p className="text-blue-100 text-lg">Secure registration, powered by AI</p>
+              <p className="text-green-100 text-lg">Secure registration, powered by AI</p>
             </motion.div>
 
             <motion.p 
@@ -195,7 +195,7 @@ const VisaAI = () => {
               whileInView={{ opacity: 1, y: 0 }}
               transition={{ duration: 0.5, delay: 1.4 }}
               viewport={{ once: true }}
-              className="text-blue-100 mb-8 leading-relaxed"
+              className="text-green-100 mb-8 leading-relaxed"
             >
               A smarter way to protect your users. Our system validates credentials, detects threats, and enforces strong passwords - all in real time.
             </motion.p>
@@ -216,7 +216,7 @@ const VisaAI = () => {
                     {feature.icon}
                     <h4 className="font-semibold">{feature.title}</h4>
                   </div>
-                  <p className="text-blue-100 text-sm">{feature.description}</p>
+                  <p className="text-green-100 text-sm">{feature.description}</p>
                 </motion.div>
               ))}
             </div>
@@ -232,14 +232,14 @@ const VisaAI = () => {
               <motion.button
                 whileHover={{ scale: 1.05 }}
                 whileTap={{ scale: 0.95 }}
-                className="px-6 py-3 bg-white text-blue-600 font-semibold rounded-lg hover:bg-blue-50 transition-colors shadow-lg"
+                className="px-6 py-3 bg-white text-green-600 font-semibold rounded-lg hover:bg-green-50 transition-colors shadow-lg"
               >
                 Create Account
               </motion.button>
               <motion.button
                 whileHover={{ scale: 1.05 }}
                 whileTap={{ scale: 0.95 }}
-                className="px-6 py-3 bg-transparent border-2 border-white text-white font-semibold rounded-lg hover:bg-white hover:text-blue-600 transition-all"
+                className="px-6 py-3 bg-transparent border-2 border-green-500 text-green-500 font-semibold rounded-lg hover:bg-green-500 hover:text-white transition-all"
               >
                 Learn More
               </motion.button>

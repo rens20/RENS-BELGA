@@ -53,11 +53,11 @@ const AboutMe = () => {
   ];
 
   return (
-    <div name="about" className="relative w-full py-20 bg-gradient-to-br from-gray-900 via-purple-900/10 to-gray-900">
+    <div name="about" className="relative w-full py-20 bg-gradient-to-br from-gray-900 via-green-900/10 to-gray-900">
       {/* Background decorations */}
       <div className="absolute inset-0 overflow-hidden">
-        <div className="absolute top-40 right-20 w-64 h-64 bg-purple-500/10 rounded-full blur-3xl animate-pulse-glow" />
-        <div className="absolute bottom-40 left-20 w-80 h-80 bg-blue-500/10 rounded-full blur-3xl animate-pulse-glow" style={{ animationDelay: '3s' }} />
+        <div className="absolute top-40 right-20 w-64 h-64 bg-green-500/10 rounded-full blur-3xl animate-pulse-glow" />
+        <div className="absolute bottom-40 left-20 w-80 h-80 bg-emerald-500/10 rounded-full blur-3xl animate-pulse-glow" style={{ animationDelay: '3s' }} />
       </div>
       
       <div className="section-container relative z-10">
@@ -76,7 +76,7 @@ const AboutMe = () => {
             className="mb-6"
           >
             <h2 className="heading-primary mb-4">
-              <span className="text-gradient animate-gradient">About Me</span>
+              <span className="text-green-500">About Me</span>
             </h2>
           </motion.div>
           
@@ -113,7 +113,7 @@ const AboutMe = () => {
               whileInView={{ opacity: 1, y: 0 }}
               transition={{ duration: 0.5, delay: index * 0.1 + 0.3 }}
               viewport={{ once: true }}
-              className="glass group hover-lift"
+              className="glass group hover-lift p-6 border border-gray-700/50 rounded-xl shadow-xl shadow-green-500/5 hover:shadow-green-500/10 transition-all duration-300 relative overflow-hidden"
               whileHover={{ y: -5 }}
             >
               <div className="flex items-start gap-4">
@@ -122,15 +122,15 @@ const AboutMe = () => {
                   whileInView={{ scale: 1, rotate: 0 }}
                   transition={{ duration: 0.5, delay: index * 0.1 + 0.4, type: "spring" }}
                   viewport={{ once: true }}
-                  className="text-blue-500 p-4 rounded-xl bg-blue-500/10 border border-blue-500/20 group-hover:bg-blue-500/20 group-hover:scale-110 transition-all duration-300 flex-shrink-0"
+                  className="text-green-500 p-4 rounded-xl bg-green-500/10 border border-green-500/20 group-hover:bg-green-500/20 group-hover:scale-110 transition-all duration-300 flex-shrink-0 shadow-lg shadow-green-500/20"
                 >
                   {skill.icon}
                 </motion.div>
                 <div className="flex-1">
-                  <h3 className="text-xl font-semibold text-white mb-3 group-hover:text-blue-400 transition-colors">
+                  <h3 className="text-xl font-semibold text-white mb-3 group-hover:text-green-400 transition-colors">
                     {skill.title}
                   </h3>
-                  <p className="text-gray-300 leading-relaxed">{skill.description}</p>
+                  <p className="text-gray-300 leading-relaxed mb-4">{skill.description}</p>
                 </div>
               </div>
               
@@ -140,7 +140,7 @@ const AboutMe = () => {
                 whileInView={{ width: '100%' }}
                 transition={{ duration: 0.8, delay: index * 0.1 + 0.6 }}
                 viewport={{ once: true }}
-                className="mt-4 h-1 bg-gradient-to-r from-blue-500 to-purple-500 rounded-full"
+                className="mt-4 h-1 bg-gradient-to-r from-green-500 to-emerald-500 rounded-full shadow-lg shadow-green-500/30"
               />
             </motion.div>
           ))}
@@ -163,9 +163,9 @@ const AboutMe = () => {
           >
             <h3 className="heading-primary mb-4">
               <span className="flex items-center justify-center gap-3">
-                <FaRocket className="text-blue-500" />
-                <span className="text-gradient animate-gradient">Tech Stack</span>
-                <FaLightbulb className="text-yellow-500" />
+                <FaRocket className="text-green-500" />
+                <span className="text-green-500">Tech Stack</span>
+                <FaLightbulb className="text-green-500" />
               </span>
             </h3>
           </motion.div>
@@ -180,7 +180,7 @@ const AboutMe = () => {
                 viewport={{ once: true }}
                 whileHover={{ scale: 1.1, y: -3, rotate: 5 }}
                 className="px-4 py-2 bg-gradient-to-r from-gray-800/50 to-gray-700/50 text-white rounded-full text-sm font-medium
-                         border border-gray-600/50 hover:border-blue-500/50 hover:from-blue-500/10 hover:to-purple-500/10 transition-all duration-300 cursor-default shadow-lg hover:shadow-blue-500/20"
+                         border border-gray-600/50 hover:border-green-500/50 hover:from-green-500/10 hover:to-emerald-500/10 transition-all duration-300 cursor-default shadow-lg hover:shadow-green-500/20"
               >
                 {skill}
               </motion.span>
@@ -196,7 +196,7 @@ const AboutMe = () => {
             className="mt-12 grid grid-cols-1 sm:grid-cols-3 gap-6 max-w-2xl mx-auto"
           >
             {[
-              { number: "3+", label: "Years Experience" },
+              { number: "5+", label: "Years Experience" },
               { number: "50+", label: "Projects Completed" },
               { number: "15+", label: "Technologies" }
             ].map((stat, index) => (
@@ -207,9 +207,9 @@ const AboutMe = () => {
                 transition={{ duration: 0.3, delay: 1.3 + index * 0.1 }}
                 viewport={{ once: true }}
                 whileHover={{ scale: 1.05 }}
-                className="glass p-4 rounded-xl text-center"
+                className="glass p-4 rounded-xl text-center border border-gray-700/30 shadow-lg shadow-green-500/5 hover:shadow-green-500/10 transition-all duration-300"
               >
-                <div className="text-2xl font-bold text-blue-400 mb-1">{stat.number}</div>
+                <div className="text-2xl font-bold text-green-400 mb-1">{stat.number}</div>
                 <div className="text-sm text-gray-400">{stat.label}</div>
               </motion.div>
             ))}

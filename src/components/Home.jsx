@@ -24,7 +24,7 @@ const Home = () => {
   }, []);
 
   return (
-    <div name="home" className="relative h-screen w-full bg-gradient-to-br from-gray-900 via-blue-900/20 to-gray-900 overflow-hidden">
+    <div name="home" className="relative h-screen w-full bg-gradient-to-br from-gray-900 via-green-900/20 to-gray-900 overflow-hidden">
       {/* Particle Background */}
       <div className="particles">
         {particles.map((particle) => (
@@ -41,7 +41,7 @@ const Home = () => {
       </div>
 
       {/* Animated Gradient Overlay */}
-      <div className="absolute inset-0 bg-gradient-to-r from-blue-600/10 via-purple-600/10 to-blue-600/10 animate-gradient opacity-30" />
+      <div className="absolute inset-0 bg-gradient-to-r from-green-600/10 via-emerald-600/10 to-green-600/10 animate-gradient opacity-30" />
       
       <div className="section-container h-full flex flex-col justify-center relative z-10">
         <motion.div 
@@ -61,11 +61,11 @@ const Home = () => {
             <motion.div
               animate={{ rotate: [0, 360] }}
               transition={{ duration: 20, repeat: Infinity, ease: "linear" }}
-              className="text-blue-500"
+              className="text-green-500"
             >
               <FaRocket size={24} />
             </motion.div>
-            <p className="text-blue-400 font-bold text-lg">
+            <p className="text-green-400 font-bold text-lg">
               Hi, my name is
             </p>
           </motion.div>
@@ -77,7 +77,7 @@ const Home = () => {
             transition={{ duration: 0.5, delay: 0.4 }}
             className="text-5xl sm:text-7xl font-bold mb-4"
           >
-            <span className="text-gradient animate-gradient">Rens Acuña</span>
+            <span className="text-green-500 animate-gradient">Rens Acuña</span>
           </motion.h1>
 
           {/* Role with typing effect */}
@@ -124,7 +124,7 @@ const Home = () => {
                 to="project"
                 smooth
                 duration={500}
-                className="button-primary flex items-center justify-center gap-2 group"
+                className="flex items-center justify-center gap-2 group px-8 py-3 bg-green-600 hover:bg-green-700 text-white rounded-full text-lg font-semibold transition-colors shadow-lg border border-green-600"
               >
                 <span>View Work</span>
                 <motion.div
@@ -144,7 +144,7 @@ const Home = () => {
               <a
                 href="/src/assets/rens-resume.pdf"
                 download="Rens_Belga_CV"
-                className="button-secondary flex items-center justify-center gap-2 group"
+                className="flex items-center justify-center gap-2 group px-8 py-3 bg-transparent border-2 border-green-500 text-green-500 rounded-full text-lg font-semibold hover:bg-green-500 hover:text-white transition-all"
               >
                 <FaCode className="group-hover:rotate-12 transition-transform" />
                 <span>Download CV</span>
@@ -163,7 +163,7 @@ const Home = () => {
               href="https://github.com/root-19"
               target="_blank"
               rel="noopener noreferrer"
-              className="icon p-3 rounded-full bg-gray-800/50 backdrop-blur-sm border border-gray-700/50 hover:border-blue-500/50"
+              className="icon p-3 rounded-full bg-green-500/20 backdrop-blur-sm border border-green-500/50 hover:border-green-400 hover:bg-green-500/30"
               whileHover={{ scale: 1.1, rotate: 5 }}
               whileTap={{ scale: 0.9 }}
             >
@@ -173,7 +173,7 @@ const Home = () => {
               href="https://linkedin.com/in/yourusername"
               target="_blank"
               rel="noopener noreferrer"
-              className="icon p-3 rounded-full bg-gray-800/50 backdrop-blur-sm border border-gray-700/50 hover:border-blue-500/50"
+              className="icon p-3 rounded-full bg-green-500/20 backdrop-blur-sm border border-green-500/50 hover:border-green-400 hover:bg-green-500/30"
               whileHover={{ scale: 1.1, rotate: -5 }}
               whileTap={{ scale: 0.9 }}
             >

@@ -2,13 +2,6 @@
 @tailwind components;
 @tailwind utilities;
 
-:root {
-  --primary-blue: #1e3a8a;
-  --secondary-blue: #3b82f6;
-  --accent-blue: #60a5fa;
-  --dark-bg: #111827;
-  --light-text: #f3f4f6;
-}
 
 body {
   @apply bg-gray-900 text-gray-100;

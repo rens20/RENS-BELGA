@@ -23,19 +23,19 @@ const Contact = () => {
 
   const contactInfo = [
     {
-      icon: <FaEnvelope className="text-blue-500" size={24} />,
+      icon: <FaEnvelope className="text-green-500" size={24} />,
       title: 'Email',
       content: 'rensbelga@example.com',
       link: 'mailto:rensbelga@example.com',
     },
     {
-      icon: <FaPhone className="text-blue-500" size={24} />,
+      icon: <FaPhone className="text-green-500" size={24} />,
       title: 'Phone',
       content: '+1 (234) 567-8900',
       link: 'tel:+12345678900',
     },
     {
-      icon: <FaMapMarkerAlt className="text-blue-500" size={24} />,
+      icon: <FaMapMarkerAlt className="text-green-500" size={24} />,
       title: 'Location',
       content: 'Manila, Philippines',
       link: 'https://maps.google.com/?q=Manila,Philippines',
@@ -43,7 +43,7 @@ const Contact = () => {
   ];
 
   return (
-    <div name="contact" className="w-full py-20 bg-gray-900">
+    <div name="contact" className="w-full py-20 bg-gradient-to-b from-gray-900 via-green-900/10 to-gray-900">
       <div className="section-container">
         <div className="max-w-3xl mx-auto text-center mb-16">
           <h2 className="heading-primary">Contact Me</h2>
@@ -62,7 +62,7 @@ const Contact = () => {
                   href={info.link}
                   target="_blank"
                   rel="noopener noreferrer"
-                  className="card flex items-center hover:border-blue-500 transition duration-300"
+                  className="card flex items-center hover:border-green-500 transition duration-300"
                 >
                   <div className="mr-4">{info.icon}</div>
                   <div>
@@ -93,7 +93,7 @@ const Contact = () => {
                   onChange={handleChange}
                   required
                   className="w-full px-4 py-3 bg-gray-800 border border-gray-700 rounded-lg 
-                           text-white focus:outline-none focus:border-blue-500 transition duration-300"
+                           text-white focus:outline-none focus:border-green-500 transition duration-300"
                   placeholder="Your name"
                 />
               </div>
@@ -113,7 +113,7 @@ const Contact = () => {
                   onChange={handleChange}
                   required
                   className="w-full px-4 py-3 bg-gray-800 border border-gray-700 rounded-lg 
-                           text-white focus:outline-none focus:border-blue-500 transition duration-300"
+                           text-white focus:outline-none focus:border-green-500 transition duration-300"
                   placeholder="your.email@example.com"
                 />
               </div>
@@ -133,7 +133,7 @@ const Contact = () => {
                   required
                   rows="4"
                   className="w-full px-4 py-3 bg-gray-800 border border-gray-700 rounded-lg 
-                           text-white focus:outline-none focus:border-blue-500 transition duration-300"
+                           text-white focus:outline-none focus:border-green-500 transition duration-300"
                   placeholder="Your message"
                 ></textarea>
               </div>

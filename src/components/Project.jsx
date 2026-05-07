@@ -56,7 +56,7 @@ const Projects = () => {
       title: "HP Performance Exhaust E-commerce System",
       description: "The HP Performance Exhaust E-commerce System is a capstone project designed to provide an efficient and user-friendly platform for managing and selling performance exhaust products. Built using PHP, Bootstrap, MySQLi, and AI, the system offers seamless functionality for both clients and administrators.",
       image: ecommer,
-      icon: <FaShoppingCart className="text-blue-400" size={24} />,
+      icon: <FaShoppingCart className="text-green-400" size={24} />,
       tags: ["PHP", "Bootstrap", "MySQL", "AI"]
     },
     {
@@ -64,7 +64,7 @@ const Projects = () => {
       title: "Dental Clinic Appointment System",
       description: "The Dental Clinic Appointment Management System is an innovative solution designed to streamline the process of setting and managing appointments. This system is built using PHP, Bootstrap, MySQLi, and AI, providing a seamless experience for both users and administrators.",
       image: Dental,
-      icon: <FaTooth className="text-blue-400" size={24} />,
+      icon: <FaTooth className="text-green-400" size={24} />,
       tags: ["PHP", "Bootstrap", "MySQL", "Appointments"]
     },
     {
@@ -72,7 +72,7 @@ const Projects = () => {
       title: "Attendance Monitoring System",
       description: "A QR code-based attendance monitoring system for efficient student tracking. Features real-time email notifications, user authentication, and comprehensive attendance data management. Built with PHP, MySQL, and Tailwind CSS.",
       image: capstone,
-      icon: <FaQrcode className="text-blue-400" size={24} />,
+      icon: <FaQrcode className="text-green-400" size={24} />,
       tags: ["PHP", "MySQL", "Tailwind", "QR Code"]
     },
     {
@@ -80,7 +80,7 @@ const Projects = () => {
       title: "RPJ Insured Auto",
       description: "An insurance agency platform specializing in automobile insurance. Features user authentication, insurance processing, and a modern responsive interface built with PHP, MySQL, and Tailwind CSS.",
       image: Auto,
-      icon: <FaCar className="text-blue-400" size={24} />,
+      icon: <FaCar className="text-green-400" size={24} />,
       tags: ["PHP", "MySQL", "Tailwind", "Insurance"]
     },
     {
@@ -88,7 +88,7 @@ const Projects = () => {
       title: "RJ Pineapple Farm",
       description: "An e-commerce platform for a pineapple farm featuring real-time chat, order tracking, and admin analytics. Includes visualized revenue graphs and comprehensive order management.",
       image: pineapple,
-      icon: <FaSeedling className="text-blue-400" size={24} />,
+      icon: <FaSeedling className="text-green-400" size={24} />,
       tags: ["PHP", "MySQL", "E-commerce", "Analytics"]
     },
     {
@@ -96,7 +96,7 @@ const Projects = () => {
       title: "Inventory Management System",
       description: "A comprehensive Sari-Sari Store inventory management solution built with PHP, MySQL, Tailwind CSS, HTML, and AJAX for efficient product stock handling.",
       image: Inventory,
-      icon: <FaBoxes className="text-blue-400" size={24} />,
+      icon: <FaBoxes className="text-green-400" size={24} />,
       tags: ["PHP", "MySQL", "Tailwind", "AJAX"]
     },
     {
@@ -104,7 +104,7 @@ const Projects = () => {
       title: "Food Ordering and Delivery System",
       description: "A full-stack food ordering platform with menu browsing, cart, checkout, and order tracking built using PHP (Laravel), Tailwind CSS, JavaScript, and SQL.",
       image: Food,
-      icon: <FaShoppingCart className="text-blue-400" size={24} />,
+      icon: <FaShoppingCart className="text-green-400" size={24} />,
       tags: ["PHP", "Laravel", "Tailwind CSS", "JavaScript", "SQL"]
     },
     {
@@ -112,7 +112,7 @@ const Projects = () => {
       title: "Framework Starter (Laravel CRUD Template)",
       description: "A reusable Laravel-based CRUD starter with authentication, role-based access, and responsive UI using Tailwind CSS and Alpine/JavaScript backed by SQL.",
       image: framework,
-      icon: <FaBoxes className="text-blue-400" size={24} />,
+      icon: <FaBoxes className="text-green-400" size={24} />,
       tags: ["PHP", "Laravel", "Tailwind CSS", "JavaScript", "SQL"]
     },
     {
@@ -120,7 +120,7 @@ const Projects = () => {
       title: "Just 10 Minute",
       description: "A productivity web app that lets users create quick 10-minute tasks/sessions with progress tracking and history, powered by Laravel, Tailwind, JavaScript, and SQL.",
       image: jsut10,
-      icon: <FaBoxes className="text-blue-400" size={24} />,
+      icon: <FaBoxes className="text-green-400" size={24} />,
       tags: ["PHP", "Laravel", "Tailwind CSS", "JavaScript", "SQL"]
     },
     {
@@ -128,7 +128,7 @@ const Projects = () => {
       title: "LearnInsure Platform",
       description: "An insurance learning portal featuring courses, quizzes, and user dashboards built with Laravel, Tailwind CSS, JavaScript, and SQL.",
       image: learn,
-      icon: <FaBoxes className="text-blue-400" size={24} />,
+      icon: <FaBoxes className="text-green-400" size={24} />,
       tags: ["PHP", "Laravel", "Tailwind CSS", "JavaScript", "SQL"]
     },
     {
@@ -136,7 +136,7 @@ const Projects = () => {
       title: "Lost and Found System",
       description: "A campus lost-and-found management system that lets users post, search, and claim items with admin verification using Laravel, Tailwind CSS, JavaScript, and SQL.",
       image: lost,
-      icon: <FaQrcode className="text-blue-400" size={24} />,
+      icon: <FaQrcode className="text-green-400" size={24} />,
       tags: ["PHP", "Laravel", "Tailwind CSS", "JavaScript", "SQL"]
     },
     {
@@ -144,7 +144,7 @@ const Projects = () => {
       title: "GradLink Alumni Portal",
       description: "An alumni networking portal for graduates with profiles, job board, and messaging built using Laravel, Tailwind CSS, JavaScript, and SQL.",
       image: gradlink,
-      icon: <FaBoxes className="text-blue-400" size={24} />,
+      icon: <FaBoxes className="text-green-400" size={24} />,
       tags: ["PHP", "Laravel", "Tailwind CSS", "JavaScript", "SQL"]
     },
     {
@@ -152,7 +152,7 @@ const Projects = () => {
       title: "AI AMA Chatbot",
       description: "An 'Ask Me Anything' chatbot interface integrated into a Laravel app with Tailwind CSS, JavaScript interactions, and SQL logging for conversations.",
       image: ai,
-      icon: <FaBoxes className="text-blue-400" size={24} />,
+      icon: <FaBoxes className="text-green-400" size={24} />,
       tags: ["PHP", "Laravel", "Tailwind CSS", "JavaScript", "SQL"]
     },
     {
@@ -160,7 +160,7 @@ const Projects = () => {
       title: "Scheduling System",
       description: "A scheduling and calendar management system with appointments, reminders, and role-based access built using Laravel, Tailwind CSS, JavaScript, and SQL.",
       image: scheduling,
-      icon: <FaBoxes className="text-blue-400" size={24} />,
+      icon: <FaBoxes className="text-green-400" size={24} />,
       tags: ["PHP", "Laravel", "Tailwind CSS", "JavaScript", "SQL"]
     },
     {
@@ -168,7 +168,7 @@ const Projects = () => {
       title: "Visa Powered by AI",
       description: "A revolutionary MERN stack visa application system with AI-powered security features, real-time processing, and intelligent fraud detection capabilities. Features secure registration, credential validation, and threat detection.",
       image: visa,
-      icon: <FaRobot className="text-blue-400" size={24} />,
+      icon: <FaRobot className="text-green-400" size={24} />,
       tags: ["MongoDB", "Express.js", "React", "Node.js", "TensorFlow.js", "AI", "JWT"]
     },
     {
@@ -184,7 +184,7 @@ const Projects = () => {
       title: "UCC School Clinic with AI",
       description: "A comprehensive school clinic management system with AI integration for health monitoring and predictive analytics. Built with React, TypeScript, and Firebase, featuring appointment scheduling, medical records management, AI-powered health insights, and real-time notifications for parents and staff.",
       image: ucc,
-      icon: <FaTooth className="text-blue-400" size={24} />,
+      icon: <FaTooth className="text-green-400" size={24} />,
       tags: ["React", "TypeScript", "Firebase", "AI/ML", "Healthcare", "Real-time", "Analytics"]
     },
     {
@@ -198,11 +198,11 @@ const Projects = () => {
   ];
 
   return (
-    <div name="project" className="relative w-full py-20 bg-gradient-to-b from-gray-900 via-indigo-900/10 to-gray-900">
+    <div name="project" className="relative w-full py-20 bg-gradient-to-b from-gray-900 via-green-900/10 to-gray-900">
       {/* Background decorations */}
       <div className="absolute inset-0 overflow-hidden">
-        <div className="absolute top-60 left-32 w-96 h-96 bg-indigo-500/10 rounded-full blur-3xl animate-pulse-glow" />
-        <div className="absolute bottom-60 right-32 w-80 h-80 bg-purple-500/10 rounded-full blur-3xl animate-pulse-glow" style={{ animationDelay: '4s' }} />
+        <div className="absolute top-60 left-32 w-96 h-96 bg-green-500/10 rounded-full blur-3xl animate-pulse-glow" />
+        <div className="absolute bottom-60 right-32 w-80 h-80 bg-emerald-500/10 rounded-full blur-3xl animate-pulse-glow" style={{ animationDelay: '4s' }} />
       </div>
       
       <div className="section-container relative z-10">
@@ -222,9 +222,9 @@ const Projects = () => {
           >
             <h2 className="heading-primary mb-4">
               <span className="flex items-center justify-center gap-3">
-                <FaRocket className="text-blue-500" />
-                <span className="text-gradient animate-gradient">Projects</span>
-                <FaRocket className="text-purple-500" />
+                <FaRocket className="text-green-500" />
+                <span className="text-green-500">Projects</span>
+                <FaRocket className="text-emerald-500" />
               </span>
             </h2>
           </motion.div>
@@ -282,21 +282,21 @@ const Projects = () => {
                   <motion.button
                     whileHover={{ scale: 1.1 }}
                     whileTap={{ scale: 0.9 }}
-                    className="p-3 bg-blue-500/20 backdrop-blur-sm rounded-full border border-blue-500/50 text-blue-400 hover:bg-blue-500/30 transition-colors"
+                    className="p-3 bg-green-500/20 backdrop-blur-sm rounded-full border border-green-500/50 text-green-400 hover:bg-green-500/30 transition-colors"
                   >
                     <FaExternalLinkAlt size={16} />
                   </motion.button>
                   <motion.button
                     whileHover={{ scale: 1.1 }}
                     whileTap={{ scale: 0.9 }}
-                    className="p-3 bg-purple-500/20 backdrop-blur-sm rounded-full border border-purple-500/50 text-purple-400 hover:bg-purple-500/30 transition-colors"
+                    className="p-3 bg-emerald-500/20 backdrop-blur-sm rounded-full border border-emerald-500/50 text-emerald-400 hover:bg-emerald-500/30 transition-colors"
                   >
                     <FaGithub size={16} />
                   </motion.button>
                 </motion.div>
                 
                 {/* Project number badge */}
-                <div className="absolute top-4 right-4 w-8 h-8 bg-blue-500/20 backdrop-blur-sm rounded-full border border-blue-500/50 flex items-center justify-center text-blue-400 text-sm font-bold">
+                <div className="absolute top-4 right-4 w-8 h-8 bg-green-500/20 backdrop-blur-sm rounded-full border border-green-500/50 flex items-center justify-center text-green-400 text-sm font-bold">
                   {project.id}
                 </div>
               </motion.div>
@@ -313,11 +313,11 @@ const Projects = () => {
                   <motion.div
                     whileHover={{ rotate: 15, scale: 1.1 }}
                     transition={{ duration: 0.2 }}
-                    className="text-blue-500"
+                    className="text-green-500"
                   >
                     {project.icon}
                   </motion.div>
-                  <h3 className="text-xl font-bold text-white group-hover:text-blue-400 transition-colors line-clamp-1">
+                  <h3 className="text-xl font-bold text-white group-hover:text-green-400 transition-colors line-clamp-1">
                     {project.title}
                   </h3>
                 </motion.div>
@@ -341,7 +341,7 @@ const Projects = () => {
                       onClick={() => toggleExpanded(project.id)}
                       whileHover={{ scale: 1.05 }}
                       whileTap={{ scale: 0.95 }}
-                      className="text-blue-400 text-sm font-medium hover:text-blue-300 transition-colors mt-2 flex items-center gap-1"
+                      className="text-green-400 text-sm font-medium hover:text-green-300 transition-colors mt-2 flex items-center gap-1"
                     >
                       {expandedProjects[project.id] ? (
                         <>
@@ -373,8 +373,8 @@ const Projects = () => {
                       transition={{ duration: 0.3, delay: index * 0.05 + tagIndex * 0.05 + 0.7 }}
                       viewport={{ once: true }}
                       whileHover={{ scale: 1.05, y: -1 }}
-                      className="px-2 py-1 bg-gradient-to-r from-blue-500/10 to-purple-500/10 text-blue-400 text-xs rounded-full
-                               border border-blue-500/20 hover:border-blue-400/50 transition-all duration-300 cursor-default"
+                      className="px-2 py-1 bg-gradient-to-r from-green-500/10 to-emerald-500/10 text-green-400 text-xs rounded-full
+                               border border-green-500/20 hover:border-green-400/50 transition-all duration-300 cursor-default"
                     >
                       {tag}
                     </motion.span>

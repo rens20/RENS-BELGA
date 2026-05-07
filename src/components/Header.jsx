@@ -44,7 +44,7 @@ const Header = () => {
       animate={{ y: 0 }}
       transition={{ duration: 0.5, type: "spring" }}
       className={`fixed w-full h-20 glass text-white z-50 transition-all duration-300 ${
-        scrolled ? 'border-b border-blue-500/20 shadow-lg shadow-blue-500/10' : 'border-b border-gray-800/50'
+        scrolled ? 'border-b border-green-500/20 shadow-lg shadow-green-500/10' : 'border-b border-gray-800/50'
       }`}
     >
       <div className="flex justify-between items-center h-full max-w-7xl mx-auto px-4 sm:px-6">
@@ -57,11 +57,11 @@ const Header = () => {
           <motion.div
             animate={{ rotate: [0, 360] }}
             transition={{ duration: 20, repeat: Infinity, ease: "linear" }}
-            className="text-blue-500"
+            className="text-green-500"
           >
             <FaRocket size={24} />
           </motion.div>
-          <h1 className="text-3xl font-bold text-gradient animate-gradient">
+          <h1 className="text-3xl font-bold text-green-500">
             RENS
           </h1>
         </motion.div>
@@ -84,7 +84,7 @@ const Header = () => {
                   className="relative px-4 py-2 cursor-pointer group"
                 >
                   <motion.span 
-                    className="text-gray-300 group-hover:text-blue-400 transition-colors duration-300 font-medium"
+                    className="text-gray-300 group-hover:text-green-400 transition-colors duration-300 font-medium"
                     whileHover={{ y: -2 }}
                   >
                     {label}
@@ -94,7 +94,7 @@ const Header = () => {
                     initial={{ width: 0 }}
                     whileHover={{ width: '100%' }}
                     transition={{ duration: 0.3 }}
-                    className="absolute bottom-0 left-0 h-0.5 bg-gradient-to-r from-blue-500 to-purple-500"
+                    className="absolute bottom-0 left-0 h-0.5 bg-gradient-to-r from-green-500 to-emerald-500"
                   />
                 </Link>
               </motion.li>
@@ -105,14 +105,14 @@ const Header = () => {
         {/* Enhanced Mobile Menu Button */}
         <motion.button
           onClick={() => setNav(!nav)}
-          className="cursor-pointer md:hidden p-2 rounded-lg bg-gray-800/50 border border-gray-700/50 hover:border-blue-500/50 transition-all duration-300"
+          className="cursor-pointer md:hidden p-2 rounded-lg bg-gray-800/50 border border-gray-700/50 hover:border-green-500/50 transition-all duration-300"
           whileHover={{ scale: 1.05 }}
           whileTap={{ scale: 0.95 }}
         >
           <motion.div
             animate={{ rotate: nav ? 180 : 0 }}
             transition={{ duration: 0.3 }}
-            className="text-blue-400"
+            className="text-green-400"
           >
             {nav ? <FaTimes size={24} /> : <FaBars size={24} />}
           </motion.div>
@@ -153,9 +153,9 @@ const Header = () => {
                       to={link}
                       smooth
                       duration={500}
-                      className="cursor-pointer text-gray-300 hover:text-blue-400 transition-colors duration-300 flex items-center gap-3"
+                      className="cursor-pointer text-gray-300 hover:text-green-400 transition-colors duration-300 flex items-center gap-3"
                     >
-                      <FaCode className="text-blue-500" size={16} />
+                      <FaCode className="text-green-500" size={16} />
                       <span>{label}</span>
                     </Link>
                   </motion.div>
@@ -164,8 +164,8 @@ const Header = () => {
             </motion.div>
             
             {/* Mobile menu decoration */}
-            <div className="absolute bottom-10 left-10 w-32 h-32 bg-blue-500/10 rounded-full blur-3xl animate-pulse-glow" />
-            <div className="absolute top-10 right-10 w-24 h-24 bg-purple-500/10 rounded-full blur-3xl animate-pulse-glow" style={{ animationDelay: '2s' }} />
+            <div className="absolute bottom-10 left-10 w-32 h-32 bg-green-500/10 rounded-full blur-3xl animate-pulse-glow" />
+            <div className="absolute top-10 right-10 w-24 h-24 bg-emerald-500/10 rounded-full blur-3xl animate-pulse-glow" style={{ animationDelay: '2s' }} />
           </motion.div>
         )}
       </AnimatePresence>
