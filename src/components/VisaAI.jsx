@@ -1,276 +1,212 @@
-import React from 'react';
 import { motion } from 'framer-motion';
-import { 
-  FaPassport, 
-  FaPlane, 
-  FaShieldAlt, 
-  FaRobot, 
-  FaLock, 
-  FaClock, 
-  FaUsers, 
-  FaKey,
+import {
+  FaPassport,
+  FaPlane,
+  FaShieldAlt,
+  FaLock,
+  FaClock,
+  FaUsers,
   FaCheckCircle,
   FaBrain,
   FaGlobe,
   FaUserShield,
-  FaBriefcase
+  FaBriefcase,
 } from 'react-icons/fa';
 
+const features = [
+  {
+    icon: <FaBrain size={18} />,
+    title: 'AI-Powered Security',
+    description:
+      'Advanced AI algorithms validate credentials and detect threats in real time.',
+  },
+  {
+    icon: <FaShieldAlt size={18} />,
+    title: 'Secure Registration',
+    description: 'Multi-layer authentication process with biometric verification.',
+  },
+  {
+    icon: <FaClock size={18} />,
+    title: 'Real-time Processing',
+    description: 'Instant application processing with AI-driven decision making.',
+  },
+  {
+    icon: <FaUserShield size={18} />,
+    title: 'Fraud Detection',
+    description:
+      'Machine learning models identify and prevent fraudulent applications.',
+  },
+];
+
+const visaCategories = [
+  { name: 'Study Abroad', icon: <FaPassport /> },
+  { name: 'Work Visa', icon: <FaBriefcase /> },
+  { name: 'Tourist Visa', icon: <FaPlane /> },
+  { name: 'PR & Immigration', icon: <FaGlobe /> },
+  { name: 'Visa Consultation', icon: <FaUsers /> },
+];
+
+const stats = [
+  { value: '99.9%', label: 'Uptime', icon: <FaCheckCircle size={14} /> },
+  { value: '10,000+', label: 'Users Protected', icon: <FaUsers size={14} /> },
+  { value: '256-bit', label: 'Encryption', icon: <FaLock size={14} /> },
+  { value: 'Real-time', label: 'AI Monitoring', icon: <FaBrain size={14} /> },
+];
+
+const techStack = [
+  'MongoDB',
+  'Express.js',
+  'React',
+  'Node.js',
+  'TensorFlow.js',
+  'JWT',
+  'bcrypt',
+  'Socket.io',
+  'Redux',
+  'Tailwind CSS',
+];
+
 const VisaAI = () => {
-  const features = [
-    {
-      icon: <FaBrain className="text-green-400" size={24} />,
-      title: "AI-Powered Security",
-      description: "Advanced AI algorithms validate credentials and detect threats in real-time"
-    },
-    {
-      icon: <FaShieldAlt className="text-green-400" size={24} />,
-      title: "Secure Registration",
-      description: "Multi-layer authentication process with biometric verification"
-    },
-    {
-      icon: <FaClock className="text-green-400" size={24} />,
-      title: "Real-time Processing",
-      description: "Instant application processing with AI-driven decision making"
-    },
-    {
-      icon: <FaUserShield className="text-green-400" size={24} />,
-      title: "Fraud Detection",
-      description: "Machine learning models identify and prevent fraudulent applications"
-    }
-  ];
-
-  const visaCategories = [
-    { name: "Study Abroad", icon: <FaPassport />, color: "text-green-500" },
-    { name: "Work Visa", icon: <FaBriefcase />, color: "text-green-500" },
-    { name: "Tourist Visa", icon: <FaPlane />, color: "text-green-500" },
-    { name: "PR & Immigration", icon: <FaGlobe />, color: "text-green-500" },
-    { name: "Visa Consultation", icon: <FaUsers />, color: "text-green-500" }
-  ];
-
-  const stats = [
-    { value: "99.9%", label: "Uptime", icon: <FaCheckCircle className="text-green-400" /> },
-    { value: "10,000+", label: "Users Protected", icon: <FaUsers className="text-green-400" /> },
-    { value: "256-bit", label: "Encryption", icon: <FaLock className="text-green-400" /> },
-    { value: "Real-time", label: "AI Monitoring", icon: <FaBrain className="text-green-400" /> }
-  ];
-
-  const techStack = ["MongoDB", "Express.js", "React", "Node.js", "TensorFlow.js", "JWT", "bcrypt", "Socket.io", "Redux", "Tailwind CSS"];
-
   return (
-    <div name="visa-ai" className="relative w-full py-20 bg-gradient-to-br from-gray-900 via-green-900/20 to-gray-900">
-      {/* Background decorations */}
-      <div className="absolute inset-0 overflow-hidden">
-        <div className="absolute top-40 right-20 w-96 h-96 bg-green-500/10 rounded-full blur-3xl animate-pulse-glow" />
-        <div className="absolute bottom-40 left-20 w-80 h-80 bg-emerald-500/10 rounded-full blur-3xl animate-pulse-glow" style={{ animationDelay: '3s' }} />
-        <div className="absolute top-60 left-1/2 w-64 h-64 bg-green-500/10 rounded-full blur-3xl animate-pulse-glow" style={{ animationDelay: '5s' }} />
-      </div>
+    <div className="section-block border-t border-ink/15">
+      <div className="section-container">
+        {/* Header */}
+        <motion.div
+          initial={{ opacity: 0, y: 20 }}
+          whileInView={{ opacity: 1, y: 0 }}
+          transition={{ duration: 0.6 }}
+          viewport={{ once: true, margin: '-80px' }}
+          className="max-w-2xl"
+        >
+          <p className="eyebrow">Case study</p>
+          <h2 className="heading-primary mt-6">
+            Visa powered by <span className="font-display italic">AI</span>
+          </h2>
+          <p className="paragraph mt-6">
+            A MERN stack visa application system with AI-powered security
+            features, real-time processing and intelligent fraud detection.
+          </p>
+        </motion.div>
 
-      <div className="section-container relative z-10">
-        {/* Header Section */}
-        <motion.div 
+        <div className="mt-16 grid gap-6 lg:grid-cols-2 lg:gap-8">
+          {/* Left: application side */}
+          <motion.div
+            initial={{ opacity: 0, y: 24 }}
+            whileInView={{ opacity: 1, y: 0 }}
+            transition={{ duration: 0.55 }}
+            viewport={{ once: true, margin: '-60px' }}
+            className="card-flat p-8 sm:p-10"
+          >
+            <div className="flex items-center gap-4">
+              <span className="flex h-12 w-12 items-center justify-center rounded-full border border-ink/20 text-sm font-semibold">
+                PH
+              </span>
+              <h3 className="heading-tertiary text-xl sm:text-2xl">
+                Philippine Visa
+              </h3>
+            </div>
+
+            <p className="paragraph-sm mt-6">
+              Streamlined visa application process with AI-powered document
+              verification and real-time status tracking.
+            </p>
+
+            <ul className="mt-8 grid gap-3 sm:grid-cols-2">
+              {visaCategories.map((category) => (
+                <li
+                  key={category.name}
+                  className="group flex items-center gap-3 rounded-xl border border-ink/15 px-4 py-3 transition-colors duration-300 hover:border-ink hover:bg-ink hover:text-floral"
+                >
+                  <span className="text-ink/60 transition-colors duration-300 group-hover:text-floral">
+                    {category.icon}
+                  </span>
+                  <span className="text-sm">{category.name}</span>
+                </li>
+              ))}
+            </ul>
+
+            <div className="mt-8 border-t border-ink/12 pt-6">
+              <p className="text-[0.6875rem] uppercase tracking-eyebrow text-ink/50">
+                Technology stack
+              </p>
+              <ul className="mt-4 flex flex-wrap gap-2">
+                {techStack.map((tech) => (
+                  <li key={tech}>
+                    <span className="chip">{tech}</span>
+                  </li>
+                ))}
+              </ul>
+            </div>
+          </motion.div>
+
+          {/* Right: inverted security panel */}
+          <motion.div
+            initial={{ opacity: 0, y: 24 }}
+            whileInView={{ opacity: 1, y: 0 }}
+            transition={{ duration: 0.55, delay: 0.1 }}
+            viewport={{ once: true, margin: '-60px' }}
+            className="card-invert p-8 sm:p-10"
+          >
+            <p className="text-[0.6875rem] uppercase tracking-eyebrow text-floral/50">
+              Secure registration, powered by AI
+            </p>
+            <h3 className="mt-5 font-display text-3xl leading-tight sm:text-4xl">
+              AI-powered security
+            </h3>
+
+            <p className="mt-5 text-sm leading-relaxed text-floral/70">
+              A smarter way to protect your users. The system validates
+              credentials, detects threats and enforces strong passwords — all in
+              real time.
+            </p>
+
+            <ul className="mt-8 grid gap-px overflow-hidden rounded-xl border border-floral/20 bg-floral/20 sm:grid-cols-2">
+              {features.map((feature) => (
+                <li key={feature.title} className="bg-ink p-5">
+                  <div className="flex items-center gap-3">
+                    <span className="text-floral/70">{feature.icon}</span>
+                    <h4 className="text-sm font-semibold">{feature.title}</h4>
+                  </div>
+                  <p className="mt-2 text-xs leading-relaxed text-floral/60">
+                    {feature.description}
+                  </p>
+                </li>
+              ))}
+            </ul>
+
+            <div className="mt-8 flex flex-col gap-3 sm:flex-row">
+              <button
+                type="button"
+                className="inline-flex items-center justify-center rounded-full border border-floral bg-floral px-7 py-3.5 text-sm font-medium text-ink transition-colors duration-300 hover:bg-transparent hover:text-floral"
+              >
+                Create account
+              </button>
+              <button
+                type="button"
+                className="inline-flex items-center justify-center rounded-full border border-floral/50 px-7 py-3.5 text-sm font-medium text-floral transition-colors duration-300 hover:bg-floral hover:text-ink"
+              >
+                Learn more
+              </button>
+            </div>
+          </motion.div>
+        </div>
+
+        {/* Stats */}
+        <motion.div
           initial={{ opacity: 0, y: 20 }}
           whileInView={{ opacity: 1, y: 0 }}
           transition={{ duration: 0.5 }}
-          viewport={{ once: true }}
-          className="max-w-4xl mx-auto text-center mb-16"
+          viewport={{ once: true, margin: '-60px' }}
+          className="mt-10 grid grid-cols-2 gap-px overflow-hidden rounded-2xl border border-ink/15 bg-ink/15 md:grid-cols-4"
         >
-          <motion.div
-            initial={{ opacity: 0, scale: 0.8 }}
-            whileInView={{ opacity: 1, scale: 1 }}
-            transition={{ duration: 0.5, delay: 0.2 }}
-            viewport={{ once: true }}
-            className="mb-6"
-          >
-            <h2 className="heading-primary mb-4">
-              <span className="flex items-center justify-center gap-3">
-                <FaPassport className="text-green-500" />
-                <span className="text-green-500">Visa Powered by AI</span>
-                <FaRobot className="text-emerald-500" />
-              </span>
-            </h2>
-          </motion.div>
-          
-          <motion.p 
-            initial={{ opacity: 0, y: 20 }}
-            whileInView={{ opacity: 1, y: 0 }}
-            transition={{ duration: 0.5, delay: 0.4 }}
-            viewport={{ once: true }}
-            className="paragraph max-w-3xl mx-auto"
-          >
-            A revolutionary MERN stack visa application system with AI-powered security features,
-            real-time processing, and intelligent fraud detection capabilities.
-          </motion.p>
-        </motion.div>
-
-        {/* Main Hero Section */}
-        <motion.div 
-          initial={{ opacity: 0 }}
-          whileInView={{ opacity: 1 }}
-          transition={{ duration: 0.5, delay: 0.6 }}
-          viewport={{ once: true }}
-          className="grid grid-cols-1 lg:grid-cols-2 gap-12 max-w-7xl mx-auto mb-16"
-        >
-          {/* Left Side - Philippine Visa Section */}
-          <motion.div 
-            initial={{ opacity: 0, x: -50 }}
-            whileInView={{ opacity: 1, x: 0 }}
-            transition={{ duration: 0.5, delay: 0.8 }}
-            viewport={{ once: true }}
-            className="glass rounded-2xl p-8 hover-lift"
-          >
-            <div className="flex items-center gap-3 mb-6">
-              <div className="w-12 h-12 bg-red-500/20 rounded-lg flex items-center justify-center">
-                <span className="text-2xl">PH</span>
-              </div>
-              <h3 className="text-2xl font-bold text-white">Philippine Visa</h3>
+          {stats.map((stat) => (
+            <div key={stat.label} className="bg-floral p-6 text-center">
+              <span className="flex justify-center text-ink/40">{stat.icon}</span>
+              <p className="mt-3 text-xl font-semibold text-ink">{stat.value}</p>
+              <p className="mt-1 text-xs uppercase tracking-eyebrow text-ink/50">
+                {stat.label}
+              </p>
             </div>
-            
-            <p className="text-gray-300 mb-6">
-              Streamlined visa application process with AI-powered document verification and real-time status tracking.
-            </p>
-
-            {/* Visa Categories */}
-            <div className="grid grid-cols-2 gap-4 mb-6">
-              {visaCategories.map((category, index) => (
-                <motion.div
-                  key={category.name}
-                  initial={{ opacity: 0, scale: 0.8 }}
-                  whileInView={{ opacity: 1, scale: 1 }}
-                  transition={{ duration: 0.3, delay: 0.1 + index * 0.1 }}
-                  viewport={{ once: true }}
-                  whileHover={{ scale: 1.05, y: -2 }}
-                  className="flex items-center gap-3 p-3 bg-gray-800/50 rounded-lg border border-gray-700/50 hover:border-green-500/50 transition-all cursor-pointer"
-                >
-                  <div className={`${category.color}`}>
-                    {category.icon}
-                  </div>
-                  <span className="text-gray-300 text-sm">{category.name}</span>
-                </motion.div>
-              ))}
-            </div>
-
-            {/* Tech Stack */}
-            <div className="mt-6">
-              <h4 className="text-lg font-semibold text-white mb-3">Technology Stack</h4>
-              <div className="flex flex-wrap gap-2">
-                {techStack.map((tech, index) => (
-                  <motion.span
-                    key={tech}
-                    initial={{ opacity: 0, scale: 0.8 }}
-                    whileInView={{ opacity: 1, scale: 1 }}
-                    transition={{ duration: 0.3, delay: 0.5 + index * 0.05 }}
-                    viewport={{ once: true }}
-                    whileHover={{ scale: 1.1, y: -1 }}
-                    className="px-2 py-1 bg-gradient-to-r from-green-500/10 to-emerald-500/10 text-green-400 text-xs rounded-full border border-green-500/20"
-                  >
-                    {tech}
-                  </motion.span>
-                ))}
-              </div>
-            </div>
-          </motion.div>
-
-          {/* Right Side - AI Security Section */}
-          <motion.div 
-            initial={{ opacity: 0, x: 50 }}
-            whileInView={{ opacity: 1, x: 0 }}
-            transition={{ duration: 0.5, delay: 1 }}
-            viewport={{ once: true }}
-            className="bg-gradient-to-br from-green-600 to-green-800 rounded-2xl p-8 text-white hover-lift"
-          >
-            <motion.div
-              initial={{ opacity: 0, scale: 0.8 }}
-              whileInView={{ opacity: 1, scale: 1 }}
-              transition={{ duration: 0.5, delay: 1.2 }}
-              viewport={{ once: true }}
-              className="mb-6"
-            >
-              <h3 className="text-3xl font-bold mb-2">AI-POWERED SECURITY</h3>
-              <p className="text-green-100 text-lg">Secure registration, powered by AI</p>
-            </motion.div>
-
-            <motion.p 
-              initial={{ opacity: 0, y: 20 }}
-              whileInView={{ opacity: 1, y: 0 }}
-              transition={{ duration: 0.5, delay: 1.4 }}
-              viewport={{ once: true }}
-              className="text-green-100 mb-8 leading-relaxed"
-            >
-              A smarter way to protect your users. Our system validates credentials, detects threats, and enforces strong passwords - all in real time.
-            </motion.p>
-
-            {/* Features Grid */}
-            <div className="grid grid-cols-2 gap-4 mb-8">
-              {features.map((feature, index) => (
-                <motion.div
-                  key={feature.title}
-                  initial={{ opacity: 0, y: 20 }}
-                  whileInView={{ opacity: 1, y: 0 }}
-                  transition={{ duration: 0.3, delay: 1.6 + index * 0.1 }}
-                  viewport={{ once: true }}
-                  whileHover={{ scale: 1.05 }}
-                  className="bg-white/10 backdrop-blur-sm rounded-lg p-4 border border-white/20"
-                >
-                  <div className="flex items-center gap-3 mb-2">
-                    {feature.icon}
-                    <h4 className="font-semibold">{feature.title}</h4>
-                  </div>
-                  <p className="text-green-100 text-sm">{feature.description}</p>
-                </motion.div>
-              ))}
-            </div>
-
-            {/* CTA Buttons */}
-            <motion.div 
-              initial={{ opacity: 0, y: 20 }}
-              whileInView={{ opacity: 1, y: 0 }}
-              transition={{ duration: 0.5, delay: 2 }}
-              viewport={{ once: true }}
-              className="flex flex-col sm:flex-row gap-4"
-            >
-              <motion.button
-                whileHover={{ scale: 1.05 }}
-                whileTap={{ scale: 0.95 }}
-                className="px-6 py-3 bg-white text-green-600 font-semibold rounded-lg hover:bg-green-50 transition-colors shadow-lg"
-              >
-                Create Account
-              </motion.button>
-              <motion.button
-                whileHover={{ scale: 1.05 }}
-                whileTap={{ scale: 0.95 }}
-                className="px-6 py-3 bg-transparent border-2 border-green-500 text-green-500 font-semibold rounded-lg hover:bg-green-500 hover:text-white transition-all"
-              >
-                Learn More
-              </motion.button>
-            </motion.div>
-          </motion.div>
-        </motion.div>
-
-        {/* Statistics Section */}
-        <motion.div 
-          initial={{ opacity: 0, y: 20 }}
-          whileInView={{ opacity: 1, y: 0 }}
-          transition={{ duration: 0.5, delay: 2.2 }}
-          viewport={{ once: true }}
-          className="grid grid-cols-2 md:grid-cols-4 gap-6 max-w-4xl mx-auto"
-        >
-          {stats.map((stat, index) => (
-            <motion.div
-              key={stat.label}
-              initial={{ opacity: 0, scale: 0.8 }}
-              whileInView={{ opacity: 1, scale: 1 }}
-              transition={{ duration: 0.3, delay: 2.4 + index * 0.1 }}
-              viewport={{ once: true }}
-              whileHover={{ scale: 1.05, y: -5 }}
-              className="glass p-6 rounded-xl text-center hover-lift"
-            >
-              <div className="flex justify-center mb-2">
-                {stat.icon}
-              </div>
-              <div className="text-2xl font-bold text-white mb-1">{stat.value}</div>
-              <div className="text-gray-400 text-sm">{stat.label}</div>
-            </motion.div>
           ))}
         </motion.div>
       </div>

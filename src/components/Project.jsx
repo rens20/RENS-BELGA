@@ -1,404 +1,378 @@
-import React, { useState } from 'react';
-import {
-  FaShoppingCart,
-  FaTooth,
-  FaQrcode,
-  FaCar,
-  FaSeedling,
-  FaBoxes,
-  FaExternalLinkAlt,
-  FaGithub,
-  FaRocket,
-  FaPassport,
-  FaRobot,
-  FaShieldAlt
-} from 'react-icons/fa';
+import { useMemo, useState } from 'react';
+import { FaExternalLinkAlt, FaGithub, FaPlus, FaMinus } from 'react-icons/fa';
 import { motion } from 'framer-motion';
-import Maria from "../assets/Maria.png";
-import Cat from "../assets/Cat.png";
-import Video from "../assets/Video.png";
-import Movie from "../assets/Movie.png";
-import Ecommer from "../assets/Ecommer.jpeg";
-import Vote from "../assets/Vote.png";
-import Auto from "../assets/Auto.png";
-import Record from "../assets/Record.png";
-import Inventory from "../assets/Inventory.jpeg";
-import Dental from "../assets/Dental.png";
-import pineapple from "../assets/pineapple.jpg";
-import capstone from "../assets/capstone12.png";
-import ecommer from "../assets/ecomer-2.png";
-import framework  from "../assets/framework.jpg";
-import Food from "../assets/food-ordering.jpg";
-import jsut10 from "../assets/just10minute.jpg";
-import learn from "../assets/learnInsure.jpg";
-import lost from "../assets/loast and found.jpg";
-import gradlink from "../assets/gradlink.jpg";
-import ai from "../assets/ai-ama.jpg";
-import scheduling from "../assets/scheduling-ssytem.jpg";
-import visa from "../assets/visa.png";
-import posWeb from "../assets/pos-web.png";
-import ucc from "../assets/ucc.png";
-import med from "../assets/med.png";
+import Auto from '../assets/Auto.png';
+import Inventory from '../assets/Inventory.jpeg';
+import Dental from '../assets/Dental.png';
+import pineapple from '../assets/pineapple.jpg';
+import capstone from '../assets/capstone12.png';
+import ecommer from '../assets/ecomer-2.png';
+import framework from '../assets/framework.jpg';
+import Food from '../assets/food-ordering.jpg';
+import jsut10 from '../assets/just10minute.jpg';
+import learn from '../assets/learnInsure.jpg';
+import lost from '../assets/loast and found.jpg';
+import gradlink from '../assets/gradlink.jpg';
+import ai from '../assets/ai-ama.jpg';
+import scheduling from '../assets/scheduling-ssytem.jpg';
+import visa from '../assets/visa.png';
+import posWeb from '../assets/pos-web.png';
+import ucc from '../assets/ucc.png';
+import med from '../assets/med.png';
+
+const projects = [
+  {
+    id: 1,
+    title: 'HP Performance Exhaust E-commerce System',
+    category: 'E-commerce',
+    description:
+      'A capstone project providing an efficient, user-friendly platform for managing and selling performance exhaust products. Built with PHP, Bootstrap, MySQLi and AI, offering seamless functionality for both clients and administrators.',
+    image: ecommer,
+    tags: ['PHP', 'Bootstrap', 'MySQL', 'AI'],
+  },
+  {
+    id: 2,
+    title: 'Dental Clinic Appointment System',
+    category: 'Healthcare',
+    description:
+      'An appointment management system that streamlines setting and managing clinic appointments. Built with PHP, Bootstrap, MySQLi and AI for a seamless experience for users and administrators alike.',
+    image: Dental,
+    tags: ['PHP', 'Bootstrap', 'MySQL', 'Appointments'],
+  },
+  {
+    id: 3,
+    title: 'Attendance Monitoring System',
+    category: 'Education',
+    description:
+      'A QR code-based attendance monitoring system for efficient student tracking. Features real-time email notifications, user authentication and comprehensive attendance data management.',
+    image: capstone,
+    tags: ['PHP', 'MySQL', 'Tailwind', 'QR Code'],
+  },
+  {
+    id: 4,
+    title: 'RPJ Insured Auto',
+    category: 'Insurance',
+    description:
+      'An insurance agency platform specialising in automobile insurance. Features user authentication, insurance processing and a modern responsive interface built with PHP, MySQL and Tailwind CSS.',
+    image: Auto,
+    tags: ['PHP', 'MySQL', 'Tailwind', 'Insurance'],
+  },
+  {
+    id: 5,
+    title: 'RJ Pineapple Farm',
+    category: 'E-commerce',
+    description:
+      'An e-commerce platform for a pineapple farm featuring real-time chat, order tracking and admin analytics, including visualised revenue graphs and comprehensive order management.',
+    image: pineapple,
+    tags: ['PHP', 'MySQL', 'E-commerce', 'Analytics'],
+  },
+  {
+    id: 6,
+    title: 'Inventory Management System',
+    category: 'Operations',
+    description:
+      'A comprehensive Sari-Sari Store inventory management solution built with PHP, MySQL, Tailwind CSS, HTML and AJAX for efficient product stock handling.',
+    image: Inventory,
+    tags: ['PHP', 'MySQL', 'Tailwind', 'AJAX'],
+  },
+  {
+    id: 7,
+    title: 'Food Ordering and Delivery System',
+    category: 'E-commerce',
+    description:
+      'A full-stack food ordering platform with menu browsing, cart, checkout and order tracking built using Laravel, Tailwind CSS, JavaScript and SQL.',
+    image: Food,
+    tags: ['PHP', 'Laravel', 'Tailwind CSS', 'JavaScript', 'SQL'],
+  },
+  {
+    id: 8,
+    title: 'Framework Starter (Laravel CRUD Template)',
+    category: 'Developer Tools',
+    description:
+      'A reusable Laravel-based CRUD starter with authentication, role-based access and a responsive UI using Tailwind CSS and Alpine/JavaScript backed by SQL.',
+    image: framework,
+    tags: ['PHP', 'Laravel', 'Tailwind CSS', 'JavaScript', 'SQL'],
+  },
+  {
+    id: 9,
+    title: 'Just 10 Minute',
+    category: 'Productivity',
+    description:
+      'A productivity web app that lets users create quick 10-minute tasks and sessions with progress tracking and history, powered by Laravel, Tailwind, JavaScript and SQL.',
+    image: jsut10,
+    tags: ['PHP', 'Laravel', 'Tailwind CSS', 'JavaScript', 'SQL'],
+  },
+  {
+    id: 10,
+    title: 'LearnInsure Platform',
+    category: 'Education',
+    description:
+      'An insurance learning portal featuring courses, quizzes and user dashboards built with Laravel, Tailwind CSS, JavaScript and SQL.',
+    image: learn,
+    tags: ['PHP', 'Laravel', 'Tailwind CSS', 'JavaScript', 'SQL'],
+  },
+  {
+    id: 11,
+    title: 'Lost and Found System',
+    category: 'Education',
+    description:
+      'A campus lost-and-found management system that lets users post, search and claim items with admin verification, using Laravel, Tailwind CSS, JavaScript and SQL.',
+    image: lost,
+    tags: ['PHP', 'Laravel', 'Tailwind CSS', 'JavaScript', 'SQL'],
+  },
+  {
+    id: 12,
+    title: 'GradLink Alumni Portal',
+    category: 'Education',
+    description:
+      'An alumni networking portal for graduates with profiles, a job board and messaging, built using Laravel, Tailwind CSS, JavaScript and SQL.',
+    image: gradlink,
+    tags: ['PHP', 'Laravel', 'Tailwind CSS', 'JavaScript', 'SQL'],
+  },
+  {
+    id: 13,
+    title: 'AI AMA Chatbot',
+    category: 'AI',
+    description:
+      'An Ask Me Anything chatbot interface integrated into a Laravel app with Tailwind CSS, JavaScript interactions and SQL logging for conversations.',
+    image: ai,
+    tags: ['PHP', 'Laravel', 'Tailwind CSS', 'JavaScript', 'SQL'],
+  },
+  {
+    id: 14,
+    title: 'Scheduling System',
+    category: 'Operations',
+    description:
+      'A scheduling and calendar management system with appointments, reminders and role-based access built using Laravel, Tailwind CSS, JavaScript and SQL.',
+    image: scheduling,
+    tags: ['PHP', 'Laravel', 'Tailwind CSS', 'JavaScript', 'SQL'],
+  },
+  {
+    id: 15,
+    title: 'Visa Powered by AI',
+    category: 'AI',
+    description:
+      'A MERN stack visa application system with AI-powered security features, real-time processing and intelligent fraud detection. Features secure registration, credential validation and threat detection.',
+    image: visa,
+    tags: ['MongoDB', 'Express.js', 'React', 'Node.js', 'TensorFlow.js', 'AI', 'JWT'],
+  },
+  {
+    id: 16,
+    title: 'MERN Stack POS System',
+    category: 'E-commerce',
+    description:
+      'A comprehensive Point of Sale system built with the MERN stack and Sass. Features real-time inventory management, sales tracking, customer management, advanced reporting, barcode scanning, receipt printing and multi-store support.',
+    image: posWeb,
+    tags: ['MongoDB', 'Express.js', 'React', 'Node.js', 'Sass', 'Redux', 'Socket.io'],
+  },
+  {
+    id: 17,
+    title: 'UCC School Clinic with AI',
+    category: 'Healthcare',
+    description:
+      'A school clinic management system with AI integration for health monitoring and predictive analytics. Built with React, TypeScript and Firebase, featuring appointment scheduling, medical records, AI-powered insights and real-time notifications.',
+    image: ucc,
+    tags: ['React', 'TypeScript', 'Firebase', 'AI/ML', 'Healthcare', 'Analytics'],
+  },
+  {
+    id: 18,
+    title: 'Philippine Pharmacy Franchising System',
+    category: 'Healthcare',
+    description:
+      'A franchising management system for pharmacy chains in the Philippines. Built with native PHP, MySQL and Bootstrap, featuring franchise management, inventory tracking, sales analytics, multi-store operations and automated reporting.',
+    image: med,
+    tags: ['Native PHP', 'MySQL', 'Bootstrap', 'Franchising', 'Analytics'],
+  },
+];
+
+const INITIAL_COUNT = 9;
 
 const Projects = () => {
-  const [expandedProjects, setExpandedProjects] = useState({});
+  const [filter, setFilter] = useState('All');
+  const [showAll, setShowAll] = useState(false);
+  const [expanded, setExpanded] = useState({});
 
-  const toggleExpanded = (projectId) => {
-    setExpandedProjects(prev => ({
-      ...prev,
-      [projectId]: !prev[projectId]
-    }));
-  };
+  const categories = useMemo(
+    () => ['All', ...Array.from(new Set(projects.map((p) => p.category)))],
+    []
+  );
 
-  const projects = [
-    {
-      id: 1,
-      title: "HP Performance Exhaust E-commerce System",
-      description: "The HP Performance Exhaust E-commerce System is a capstone project designed to provide an efficient and user-friendly platform for managing and selling performance exhaust products. Built using PHP, Bootstrap, MySQLi, and AI, the system offers seamless functionality for both clients and administrators.",
-      image: ecommer,
-      icon: <FaShoppingCart className="text-green-400" size={24} />,
-      tags: ["PHP", "Bootstrap", "MySQL", "AI"]
-    },
-    {
-      id: 2,
-      title: "Dental Clinic Appointment System",
-      description: "The Dental Clinic Appointment Management System is an innovative solution designed to streamline the process of setting and managing appointments. This system is built using PHP, Bootstrap, MySQLi, and AI, providing a seamless experience for both users and administrators.",
-      image: Dental,
-      icon: <FaTooth className="text-green-400" size={24} />,
-      tags: ["PHP", "Bootstrap", "MySQL", "Appointments"]
-    },
-    {
-      id: 3,
-      title: "Attendance Monitoring System",
-      description: "A QR code-based attendance monitoring system for efficient student tracking. Features real-time email notifications, user authentication, and comprehensive attendance data management. Built with PHP, MySQL, and Tailwind CSS.",
-      image: capstone,
-      icon: <FaQrcode className="text-green-400" size={24} />,
-      tags: ["PHP", "MySQL", "Tailwind", "QR Code"]
-    },
-    {
-      id: 4,
-      title: "RPJ Insured Auto",
-      description: "An insurance agency platform specializing in automobile insurance. Features user authentication, insurance processing, and a modern responsive interface built with PHP, MySQL, and Tailwind CSS.",
-      image: Auto,
-      icon: <FaCar className="text-green-400" size={24} />,
-      tags: ["PHP", "MySQL", "Tailwind", "Insurance"]
-    },
-    {
-      id: 5,
-      title: "RJ Pineapple Farm",
-      description: "An e-commerce platform for a pineapple farm featuring real-time chat, order tracking, and admin analytics. Includes visualized revenue graphs and comprehensive order management.",
-      image: pineapple,
-      icon: <FaSeedling className="text-green-400" size={24} />,
-      tags: ["PHP", "MySQL", "E-commerce", "Analytics"]
-    },
-    {
-      id: 6,
-      title: "Inventory Management System",
-      description: "A comprehensive Sari-Sari Store inventory management solution built with PHP, MySQL, Tailwind CSS, HTML, and AJAX for efficient product stock handling.",
-      image: Inventory,
-      icon: <FaBoxes className="text-green-400" size={24} />,
-      tags: ["PHP", "MySQL", "Tailwind", "AJAX"]
-    },
-    {
-      id: 7,
-      title: "Food Ordering and Delivery System",
-      description: "A full-stack food ordering platform with menu browsing, cart, checkout, and order tracking built using PHP (Laravel), Tailwind CSS, JavaScript, and SQL.",
-      image: Food,
-      icon: <FaShoppingCart className="text-green-400" size={24} />,
-      tags: ["PHP", "Laravel", "Tailwind CSS", "JavaScript", "SQL"]
-    },
-    {
-      id: 8,
-      title: "Framework Starter (Laravel CRUD Template)",
-      description: "A reusable Laravel-based CRUD starter with authentication, role-based access, and responsive UI using Tailwind CSS and Alpine/JavaScript backed by SQL.",
-      image: framework,
-      icon: <FaBoxes className="text-green-400" size={24} />,
-      tags: ["PHP", "Laravel", "Tailwind CSS", "JavaScript", "SQL"]
-    },
-    {
-      id: 9,
-      title: "Just 10 Minute",
-      description: "A productivity web app that lets users create quick 10-minute tasks/sessions with progress tracking and history, powered by Laravel, Tailwind, JavaScript, and SQL.",
-      image: jsut10,
-      icon: <FaBoxes className="text-green-400" size={24} />,
-      tags: ["PHP", "Laravel", "Tailwind CSS", "JavaScript", "SQL"]
-    },
-    {
-      id: 10,
-      title: "LearnInsure Platform",
-      description: "An insurance learning portal featuring courses, quizzes, and user dashboards built with Laravel, Tailwind CSS, JavaScript, and SQL.",
-      image: learn,
-      icon: <FaBoxes className="text-green-400" size={24} />,
-      tags: ["PHP", "Laravel", "Tailwind CSS", "JavaScript", "SQL"]
-    },
-    {
-      id: 11,
-      title: "Lost and Found System",
-      description: "A campus lost-and-found management system that lets users post, search, and claim items with admin verification using Laravel, Tailwind CSS, JavaScript, and SQL.",
-      image: lost,
-      icon: <FaQrcode className="text-green-400" size={24} />,
-      tags: ["PHP", "Laravel", "Tailwind CSS", "JavaScript", "SQL"]
-    },
-    {
-      id: 12,
-      title: "GradLink Alumni Portal",
-      description: "An alumni networking portal for graduates with profiles, job board, and messaging built using Laravel, Tailwind CSS, JavaScript, and SQL.",
-      image: gradlink,
-      icon: <FaBoxes className="text-green-400" size={24} />,
-      tags: ["PHP", "Laravel", "Tailwind CSS", "JavaScript", "SQL"]
-    },
-    {
-      id: 13,
-      title: "AI AMA Chatbot",
-      description: "An 'Ask Me Anything' chatbot interface integrated into a Laravel app with Tailwind CSS, JavaScript interactions, and SQL logging for conversations.",
-      image: ai,
-      icon: <FaBoxes className="text-green-400" size={24} />,
-      tags: ["PHP", "Laravel", "Tailwind CSS", "JavaScript", "SQL"]
-    },
-    {
-      id: 14,
-      title: "Scheduling System",
-      description: "A scheduling and calendar management system with appointments, reminders, and role-based access built using Laravel, Tailwind CSS, JavaScript, and SQL.",
-      image: scheduling,
-      icon: <FaBoxes className="text-green-400" size={24} />,
-      tags: ["PHP", "Laravel", "Tailwind CSS", "JavaScript", "SQL"]
-    },
-    {
-      id: 15,
-      title: "Visa Powered by AI",
-      description: "A revolutionary MERN stack visa application system with AI-powered security features, real-time processing, and intelligent fraud detection capabilities. Features secure registration, credential validation, and threat detection.",
-      image: visa,
-      icon: <FaRobot className="text-green-400" size={24} />,
-      tags: ["MongoDB", "Express.js", "React", "Node.js", "TensorFlow.js", "AI", "JWT"]
-    },
-    {
-      id: 16,
-      title: "MERN Stack POS System",
-      description: "A comprehensive Point of Sale system built with MERN stack and Sass for styling. Features real-time inventory management, sales tracking, customer management, and advanced reporting with responsive design and modern UI/UX. Includes barcode scanning, receipt printing, and multi-store support.",
-      image: posWeb,
-      icon: <FaShoppingCart className="text-green-400" size={24} />,
-      tags: ["MongoDB", "Express.js", "React", "Node.js", "Sass", "Redux", "Socket.io", "Barcode"]
-    },
-    {
-      id: 17,
-      title: "UCC School Clinic with AI",
-      description: "A comprehensive school clinic management system with AI integration for health monitoring and predictive analytics. Built with React, TypeScript, and Firebase, featuring appointment scheduling, medical records management, AI-powered health insights, and real-time notifications for parents and staff.",
-      image: ucc,
-      icon: <FaTooth className="text-green-400" size={24} />,
-      tags: ["React", "TypeScript", "Firebase", "AI/ML", "Healthcare", "Real-time", "Analytics"]
-    },
-    {
-      id: 18,
-      title: "Philippine Pharmacy Franchising System",
-      description: "A comprehensive franchising management system for pharmacy chains in the Philippines. Built with Native PHP, MySQL, and Bootstrap, featuring franchise management, inventory tracking, sales analytics, multi-store operations, and automated reporting for franchise owners and administrators.",
-      image: med,
-      icon: <FaSeedling className="text-green-400" size={24} />,
-      tags: ["Native PHP", "MySQL", "Bootstrap", "Franchising", "Pharmacy", "Analytics", "Multi-store"]
-    }
-  ];
+  const filtered = useMemo(
+    () => (filter === 'All' ? projects : projects.filter((p) => p.category === filter)),
+    [filter]
+  );
+
+  const visible = showAll ? filtered : filtered.slice(0, INITIAL_COUNT);
+
+  const toggleExpanded = (id) =>
+    setExpanded((prev) => ({ ...prev, [id]: !prev[id] }));
 
   return (
-    <div name="project" className="relative w-full py-20 bg-gradient-to-b from-gray-900 via-green-900/10 to-gray-900">
-      {/* Background decorations */}
-      <div className="absolute inset-0 overflow-hidden">
-        <div className="absolute top-60 left-32 w-96 h-96 bg-green-500/10 rounded-full blur-3xl animate-pulse-glow" />
-        <div className="absolute bottom-60 right-32 w-80 h-80 bg-emerald-500/10 rounded-full blur-3xl animate-pulse-glow" style={{ animationDelay: '4s' }} />
-      </div>
-      
-      <div className="section-container relative z-10">
-        <motion.div 
+    <div className="section-block border-t border-ink/15">
+      <div className="section-container">
+        {/* Section header */}
+        <motion.div
           initial={{ opacity: 0, y: 20 }}
           whileInView={{ opacity: 1, y: 0 }}
-          transition={{ duration: 0.5 }}
-          viewport={{ once: true }}
-          className="max-w-4xl mx-auto text-center mb-16"
+          transition={{ duration: 0.6 }}
+          viewport={{ once: true, margin: '-80px' }}
+          className="grid gap-10 lg:grid-cols-12"
         >
-          <motion.div
-            initial={{ opacity: 0, scale: 0.8 }}
-            whileInView={{ opacity: 1, scale: 1 }}
-            transition={{ duration: 0.5, delay: 0.2 }}
-            viewport={{ once: true }}
-            className="mb-6"
-          >
-            <h2 className="heading-primary mb-4">
-              <span className="flex items-center justify-center gap-3">
-                <FaRocket className="text-green-500" />
-                <span className="text-green-500">Projects</span>
-                <FaRocket className="text-emerald-500" />
-              </span>
+          <div className="lg:col-span-6">
+            <p className="eyebrow">03 — Projects</p>
+            <h2 className="heading-primary mt-6">
+              Selected <span className="font-display italic">work</span>
             </h2>
-          </motion.div>
-          
-          <motion.p 
-            initial={{ opacity: 0, y: 20 }}
-            whileInView={{ opacity: 1, y: 0 }}
-            transition={{ duration: 0.5, delay: 0.4 }}
-            viewport={{ once: true }}
-            className="paragraph max-w-3xl mx-auto"
-          >
-            Here are some of my recent projects that showcase my skills and experience
-            in web development and system design.
-          </motion.p>
+          </div>
+          <div className="lg:col-span-6 lg:pt-4">
+            <p className="paragraph">
+              Recent projects that showcase my skills and experience in web
+              development and system design.
+            </p>
+            <p className="mt-4 text-xs uppercase tracking-eyebrow text-ink/50">
+              {projects.length} projects total
+            </p>
+          </div>
         </motion.div>
 
-        <motion.div 
-          initial={{ opacity: 0 }}
-          whileInView={{ opacity: 1 }}
-          transition={{ duration: 0.5, delay: 0.2 }}
-          viewport={{ once: true }}
-          className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8 max-w-7xl mx-auto"
-        >
-          {projects.map((project, index) => (
-            <motion.div
+        {/* Category filter */}
+        <div className="-mx-5 mt-12 overflow-x-auto px-5 pb-1 sm:mx-0 sm:px-0">
+          <div className="flex min-w-max gap-2 sm:min-w-0 sm:flex-wrap">
+            {categories.map((category) => {
+              const isActive = filter === category;
+              return (
+                <button
+                  key={category}
+                  type="button"
+                  onClick={() => {
+                    setFilter(category);
+                    setShowAll(false);
+                  }}
+                  aria-pressed={isActive}
+                  className={`rounded-full border px-4 py-2 text-xs font-medium tracking-wide transition-colors duration-300 sm:text-sm ${
+                    isActive
+                      ? 'border-ink bg-ink text-floral'
+                      : 'border-ink/20 text-ink/60 hover:border-ink hover:text-ink'
+                  }`}
+                >
+                  {category}
+                </button>
+              );
+            })}
+          </div>
+        </div>
+
+        {/* Grid */}
+        <div className="mt-10 grid gap-6 sm:grid-cols-2 lg:grid-cols-3 lg:gap-8">
+          {visible.map((project, index) => (
+            <motion.article
               key={project.id}
-              initial={{ opacity: 0, y: 30 }}
+              initial={{ opacity: 0, y: 24 }}
               whileInView={{ opacity: 1, y: 0 }}
-              transition={{ duration: 0.5, delay: index * 0.05 + 0.3 }}
-              viewport={{ once: true }}
-              className="glass group hover-lift rounded-xl overflow-hidden shadow-xl"
-              whileHover={{ y: -8 }}
+              transition={{ duration: 0.5, delay: (index % 3) * 0.08 }}
+              viewport={{ once: true, margin: '-40px' }}
+              className="card group flex flex-col overflow-hidden"
             >
-              {/* Enhanced Image Container */}
-              <motion.div 
-                initial={{ opacity: 0, scale: 0.8 }}
-                whileInView={{ opacity: 1, scale: 1 }}
-                transition={{ duration: 0.5, delay: index * 0.05 + 0.4 }}
-                viewport={{ once: true }}
-                className="relative overflow-hidden h-48 bg-gradient-to-br from-gray-800 to-gray-700"
-              >
-                <img
-                  src={project.image}
-                  alt={project.title}
-                  className="w-full h-full object-cover transform group-hover:scale-110 transition-transform duration-500"
-                />
-                
-                {/* Enhanced overlay with actions */}
-                <motion.div 
-                  initial={{ opacity: 0 }}
-                  whileHover={{ opacity: 1 }}
-                  transition={{ duration: 0.3 }}
-                  className="absolute inset-0 bg-gradient-to-t from-gray-900/90 via-gray-900/50 to-transparent flex items-center justify-center gap-4"
-                >
-                  <motion.button
-                    whileHover={{ scale: 1.1 }}
-                    whileTap={{ scale: 0.9 }}
-                    className="p-3 bg-green-500/20 backdrop-blur-sm rounded-full border border-green-500/50 text-green-400 hover:bg-green-500/30 transition-colors"
+              {/* Image */}
+              <div className="media aspect-[16/10] border-b border-ink/15">
+                <img src={project.image} alt={project.title} loading="lazy" />
+
+                {/* Hover actions */}
+                <div className="absolute inset-0 flex items-center justify-center gap-3 opacity-0 transition-opacity duration-300 group-hover:opacity-100">
+                  <div className="absolute inset-0 bg-ink/60" />
+                  <button
+                    type="button"
+                    aria-label={`Open ${project.title}`}
+                    className="relative flex h-10 w-10 items-center justify-center rounded-full border border-floral/60 text-floral transition-colors duration-300 hover:bg-floral hover:text-ink"
                   >
-                    <FaExternalLinkAlt size={16} />
-                  </motion.button>
-                  <motion.button
-                    whileHover={{ scale: 1.1 }}
-                    whileTap={{ scale: 0.9 }}
-                    className="p-3 bg-emerald-500/20 backdrop-blur-sm rounded-full border border-emerald-500/50 text-emerald-400 hover:bg-emerald-500/30 transition-colors"
+                    <FaExternalLinkAlt size={13} />
+                  </button>
+                  <button
+                    type="button"
+                    aria-label={`View ${project.title} source`}
+                    className="relative flex h-10 w-10 items-center justify-center rounded-full border border-floral/60 text-floral transition-colors duration-300 hover:bg-floral hover:text-ink"
                   >
-                    <FaGithub size={16} />
-                  </motion.button>
-                </motion.div>
-                
-                {/* Project number badge */}
-                <div className="absolute top-4 right-4 w-8 h-8 bg-green-500/20 backdrop-blur-sm rounded-full border border-green-500/50 flex items-center justify-center text-green-400 text-sm font-bold">
-                  {project.id}
+                    <FaGithub size={14} />
+                  </button>
                 </div>
-              </motion.div>
 
-              {/* Enhanced Content */}
-              <div className="p-6">
-                <motion.div 
-                  initial={{ opacity: 0, x: -20 }}
-                  whileInView={{ opacity: 1, x: 0 }}
-                  transition={{ duration: 0.5, delay: index * 0.05 + 0.5 }}
-                  viewport={{ once: true }}
-                  className="flex items-center gap-3 mb-3"
+                {/* Index badge */}
+                <span className="absolute left-4 top-4 flex h-8 min-w-[2rem] items-center justify-center rounded-full bg-floral px-2 text-xs font-semibold text-ink">
+                  {String(project.id).padStart(2, '0')}
+                </span>
+              </div>
+
+              {/* Body */}
+              <div className="flex flex-1 flex-col p-6">
+                <p className="text-[0.6875rem] uppercase tracking-eyebrow text-ink/45">
+                  {project.category}
+                </p>
+
+                <h3 className="heading-tertiary mt-3">{project.title}</h3>
+
+                <p
+                  className={`paragraph-sm mt-3 ${
+                    expanded[project.id] ? '' : 'line-clamp-3'
+                  }`}
                 >
-                  <motion.div
-                    whileHover={{ rotate: 15, scale: 1.1 }}
-                    transition={{ duration: 0.2 }}
-                    className="text-green-500"
+                  {project.description}
+                </p>
+
+                {project.description.length > 150 && (
+                  <button
+                    type="button"
+                    onClick={() => toggleExpanded(project.id)}
+                    className="btn-text mt-4 self-start"
                   >
-                    {project.icon}
-                  </motion.div>
-                  <h3 className="text-xl font-bold text-white group-hover:text-green-400 transition-colors line-clamp-1">
-                    {project.title}
-                  </h3>
-                </motion.div>
+                    {expanded[project.id] ? (
+                      <>
+                        <FaMinus size={9} />
+                        <span>Read less</span>
+                      </>
+                    ) : (
+                      <>
+                        <FaPlus size={9} />
+                        <span>Read more</span>
+                      </>
+                    )}
+                  </button>
+                )}
 
-                <motion.div 
-                  initial={{ opacity: 0 }}
-                  whileInView={{ opacity: 1 }}
-                  transition={{ duration: 0.5, delay: index * 0.05 + 0.6 }}
-                  viewport={{ once: true }}
-                  className="mb-4"
-                >
-                  <p className={`text-gray-300 text-sm leading-relaxed ${
-                    expandedProjects[project.id] ? '' : 'line-clamp-2'
-                  }`}>
-                    {project.description}
-                  </p>
-                  
-                  {/* Read More/Read Less Button */}
-                  {project.description.length > 150 && (
-                    <motion.button
-                      onClick={() => toggleExpanded(project.id)}
-                      whileHover={{ scale: 1.05 }}
-                      whileTap={{ scale: 0.95 }}
-                      className="text-green-400 text-sm font-medium hover:text-green-300 transition-colors mt-2 flex items-center gap-1"
-                    >
-                      {expandedProjects[project.id] ? (
-                        <>
-                          <span>Read Less</span>
-                          <motion.div
-                            animate={{ rotate: 180 }}
-                            transition={{ duration: 0.3 }}
-                          >
-                            <FaRocket size={12} />
-                          </motion.div>
-                        </>
-                      ) : (
-                        <>
-                          <span>Read More</span>
-                          <FaRocket size={12} />
-                        </>
-                      )}
-                    </motion.button>
-                  )}
-                </motion.div>
-
-                {/* Enhanced tags with better layout */}
-                <div className="flex flex-wrap gap-2">
-                  {project.tags.slice(0, 3).map((tag, tagIndex) => (
-                    <motion.span
-                      key={tagIndex}
-                      initial={{ opacity: 0, scale: 0.8 }}
-                      whileInView={{ opacity: 1, scale: 1 }}
-                      transition={{ duration: 0.3, delay: index * 0.05 + tagIndex * 0.05 + 0.7 }}
-                      viewport={{ once: true }}
-                      whileHover={{ scale: 1.05, y: -1 }}
-                      className="px-2 py-1 bg-gradient-to-r from-green-500/10 to-emerald-500/10 text-green-400 text-xs rounded-full
-                               border border-green-500/20 hover:border-green-400/50 transition-all duration-300 cursor-default"
-                    >
-                      {tag}
-                    </motion.span>
+                <ul className="mt-6 flex flex-wrap gap-2 border-t border-ink/12 pt-5">
+                  {project.tags.slice(0, 3).map((tag) => (
+                    <li key={tag}>
+                      <span className="chip">{tag}</span>
+                    </li>
                   ))}
                   {project.tags.length > 3 && (
-                    <motion.span
-                      initial={{ opacity: 0 }}
-                      whileInView={{ opacity: 1 }}
-                      transition={{ duration: 0.3, delay: index * 0.05 + 0.8 }}
-                      viewport={{ once: true }}
-                      className="px-2 py-1 bg-gray-700/50 text-gray-400 text-xs rounded-full"
-                    >
-                      +{project.tags.length - 3}
-                    </motion.span>
+                    <li>
+                      <span className="chip border-transparent bg-ink/[0.06] text-ink/50">
+                        +{project.tags.length - 3}
+                      </span>
+                    </li>
                   )}
-                </div>
+                </ul>
               </div>
-            </motion.div>
+            </motion.article>
           ))}
-        </motion.div>
+        </div>
+
+        {/* Show more */}
+        {filtered.length > INITIAL_COUNT && (
+          <div className="mt-14 flex flex-col items-center gap-8">
+            <div className="rule" />
+            <button
+              type="button"
+              onClick={() => setShowAll((prev) => !prev)}
+              className="btn-outline"
+            >
+              {showAll ? 'Show fewer projects' : `Show all ${filtered.length} projects`}
+            </button>
+          </div>
+        )}
       </div>
     </div>
   );
 };
 
 export default Projects;
-

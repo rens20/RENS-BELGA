@@ -2,350 +2,285 @@
 @tailwind components;
 @tailwind utilities;
 
+/* ==========================================================================
+   TWO-COLOUR SYSTEM
+   Only two colours exist in this design:
+     --ink    #0A0A0A  (black)
+     --floral #FFFAF0  (floral white)
+   All depth comes from opacity of the ink over the floral white ground,
+   never from a third hue.
+   ========================================================================== */
 
-body {
-  @apply bg-gray-900 text-gray-100;
-  font-family: 'Inter', sans-serif;
-}
-
-.section-container {
-  @apply max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-16;
-}
-
-.heading-primary {
-  @apply text-4xl sm:text-5xl font-bold text-blue-500 mb-6;
-}
-
-.heading-secondary {
-  @apply text-3xl sm:text-4xl font-semibold text-white mb-4;
-}
-
-.paragraph {
-  @apply text-lg text-gray-300 leading-relaxed;
-}
-
-.button-primary {
-  @apply bg-gradient-to-r from-blue-600 to-blue-500 hover:from-blue-700 hover:to-blue-600 text-white font-semibold py-3 px-6 rounded-lg 
-         transition duration-300 ease-in-out transform hover:scale-105 shadow-lg hover:shadow-blue-500/25
-         relative overflow-hidden;
-}
-
-.button-primary::before {
-  content: '';
-  position: absolute;
-  top: 0;
-  left: -100%;
-  width: 100%;
-  height: 100%;
-  background: linear-gradient(90deg, transparent, rgba(255,255,255,0.2), transparent);
-  transition: left 0.5s;
-}
-
-.button-primary:hover::before {
-  left: 100%;
-}
-
-.button-secondary {
-  @apply bg-gray-800/50 backdrop-blur-sm hover:bg-gray-700/50 text-white font-semibold py-3 px-6 rounded-lg
-         border border-blue-500/50 hover:border-blue-400 transition duration-300 ease-in-out transform hover:scale-105
-         hover:shadow-lg hover:shadow-blue-500/10 relative overflow-hidden;
-}
-
-.button-secondary::before {
-  content: '';
-  position: absolute;
-  top: 0;
-  left: -100%;
-  width: 100%;
-  height: 100%;
-  background: linear-gradient(90deg, transparent, rgba(59,130,246,0.2), transparent);
-  transition: left 0.5s;
-}
-
-.button-secondary:hover::before {
-  left: 100%;
-}
-
-.card {
-  @apply bg-gray-800/50 backdrop-blur-sm rounded-xl p-6 shadow-xl border border-gray-700/50 
-         hover:border-blue-500/50 transition duration-300 hover:shadow-2xl hover:shadow-blue-500/10
-         hover:transform hover:scale-[1.02] relative overflow-hidden;
-}
-
-.card::before {
-  content: '';
-  position: absolute;
-  top: 0;
-  left: 0;
-  right: 0;
-  height: 1px;
-  background: linear-gradient(90deg, transparent, #3b82f6, transparent);
-  opacity: 0;
-  transition: opacity 0.3s;
-}
-
-.card:hover::before {
-  opacity: 1;
-}
-
-.nav-link {
-  @apply text-gray-300 hover:text-blue-400 transition duration-200 text-lg font-medium;
-}
-
-.icon {
-  @apply text-blue-500 hover:text-blue-400 transition duration-200 relative;
-}
-
-.icon:hover {
-  transform: translateY(-2px);
-  filter: drop-shadow(0 4px 8px rgba(59, 130, 246, 0.3));
-}
-
-/* Animation classes */
-.fade-in {
-  @apply opacity-0 animate-[fadeIn_1s_ease-in_forwards];
-}
-
-.slide-up {
-  @apply transform translate-y-10 opacity-0 animate-[slideUp_0.5s_ease-out_forwards];
-}
-
-@keyframes fadeIn {
-  from {
-    opacity: 0;
+@layer base {
+  :root {
+    --ink: 10 10 10;
+    --floral: 255 250 240;
   }
-  to {
+
+  * {
+    -webkit-tap-highlight-color: transparent;
+  }
+
+  html {
+    scroll-behavior: smooth;
+    /* Header is 5.5rem; keep anchored sections clear of it. */
+    scroll-padding-top: 5.5rem;
+    -webkit-text-size-adjust: 100%;
+  }
+
+  body {
+    @apply bg-floral text-ink font-sans antialiased;
+    font-feature-settings: "kern" 1, "liga" 1, "cv11" 1;
+    overflow-x: hidden;
+  }
+
+  ::selection {
+    @apply bg-ink text-floral;
+  }
+
+  /* Preflight's default placeholder is a grey; bring it into the palette. */
+  input::placeholder,
+  textarea::placeholder {
+    color: rgb(var(--ink) / 0.35);
     opacity: 1;
   }
-}
 
-@keyframes slideUp {
-  from {
-    transform: translateY(40px);
-    opacity: 0;
-  }
-  to {
-    transform: translateY(0);
-    opacity: 1;
-  }
-}
-
-html {
-  scroll-behavior: smooth;
-}
-
-.nav {
-  background: linear-gradient(90deg,#020617,#020617,#020617)
-}
-.header{
-  background: linear-gradient(90deg, #020617, #020617, #020617)
-}
-@keyframes wave {
-  0% {
-    margin-left: 0;
+  /* Focus ring stays inside the palette. */
+  :focus-visible {
+    outline: 2px solid rgb(var(--ink));
+    outline-offset: 3px;
+    border-radius: 2px;
   }
 
-  100% {
-    margin-left: -1600px;
+  /* Scrollbar, monochrome. */
+  ::-webkit-scrollbar {
+    width: 10px;
+    height: 10px;
+  }
+  ::-webkit-scrollbar-track {
+    background: rgb(var(--floral));
+  }
+  ::-webkit-scrollbar-thumb {
+    background: rgb(var(--ink) / 0.25);
+    border: 3px solid rgb(var(--floral));
+    border-radius: 99px;
+  }
+  ::-webkit-scrollbar-thumb:hover {
+    background: rgb(var(--ink) / 0.5);
   }
 }
 
-@keyframes swell {
-  0%,
-  100% {
-    transform: translate3d(0, -25px, 0);
+@layer components {
+  /* ---------- Layout ---------------------------------------------------- */
+
+  .section-container {
+    @apply mx-auto w-full max-w-content px-6 sm:px-10 lg:px-14;
   }
 
-  50% {
-    transform: translate3d(0, 5px, 0);
+  .section-block {
+    @apply py-20 sm:py-24 lg:py-32;
   }
-}
 
-@keyframes waveAnimation1 {
-  0% {
-    transform: translateY(0);
+  /* Hairline divider — the workhorse of a two-colour layout. */
+  .rule {
+    @apply h-px w-full bg-ink/15;
   }
-  50% {
-    transform: translateY(25px);
+
+  /* ---------- Type ------------------------------------------------------ */
+
+  .eyebrow {
+    @apply flex items-center gap-3 text-[0.6875rem] font-medium uppercase
+           tracking-eyebrow text-ink/50 sm:text-xs;
   }
-  100% {
-    transform: translateY(0);
+
+  .eyebrow::before {
+    content: "";
+    @apply h-px w-8 shrink-0 bg-ink/30 sm:w-12;
   }
-}
 
-@keyframes waveAnimation2 {
-  0% {
-    transform: translateY(0);
+  .heading-primary {
+    @apply font-display text-[2.75rem] leading-[1.05] tracking-[-0.02em]
+           text-ink sm:text-6xl lg:text-7xl;
   }
-  50% {
-    transform: translateY(50px);
+
+  .heading-secondary {
+    @apply font-display text-3xl leading-[1.1] tracking-[-0.01em]
+           text-ink sm:text-4xl lg:text-5xl;
   }
-  100% {
-    transform: translateY(0);
+
+  .heading-tertiary {
+    @apply text-lg font-semibold leading-snug tracking-[-0.01em]
+           text-ink sm:text-xl;
   }
-}
 
-@keyframes waveAnimation3 {
-  0% {
-    transform: translateY(0);
+  .paragraph {
+    @apply text-base leading-relaxed text-ink/70 sm:text-lg;
   }
-  50% {
-    transform: translateY(75px);
+
+  .paragraph-sm {
+    @apply text-sm leading-relaxed text-ink/60;
   }
-  100% {
-    transform: translateY(0);
+
+  /* Numerals used as section counters / stats. */
+  .numeral {
+    @apply font-display text-4xl leading-none tracking-[-0.02em] text-ink sm:text-5xl;
   }
-}
 
-.wave-container {
-  /* position: relative; */
-  height: 100vh;
-  /* overflow: hidden; */
-}
+  /* ---------- Buttons --------------------------------------------------- */
 
-.wave {
-  position: absolute;
-  bottom: 0;
-  left: 0;
-  width: 100%;
-  height: 250px;
-  background: linear-gradient(90deg, #111827, #09090b, #020617); /* Adjusted opacity */
-}
-
-.wave1 {
-  animation: waveAnimation1 16s infinite alternate;
-}
-
-.wave2 {
-  animation: waveAnimation2 10s infinite alternate;
-}
-
-.wave3 {
-  animation: waveAnimation3 7s infinite alternate;
-}
-.content {
-  z-index: 2; 
-  padding: 20px;
-}
-
-@keyframes slide {
-  0% {
-    transform: translateX(-100%);
+  /* Filled: ink plate, floral type. Inverts to outline on hover. */
+  .btn-solid {
+    @apply inline-flex items-center justify-center gap-2.5 rounded-full
+           border border-ink bg-ink px-7 py-3.5 text-sm font-medium
+           tracking-wide text-floral transition-colors duration-300
+           hover:bg-floral hover:text-ink;
   }
-  100% {
-    transform: translateX(100%);
+
+  /* Outline: floral plate, ink type. Inverts to filled on hover. */
+  .btn-outline {
+    @apply inline-flex items-center justify-center gap-2.5 rounded-full
+           border border-ink/25 bg-transparent px-7 py-3.5 text-sm font-medium
+           tracking-wide text-ink transition-colors duration-300
+           hover:border-ink hover:bg-ink hover:text-floral;
   }
-}
 
-.animate-slide {
-  animation: slide 20s linear infinite;
-}
-
-/* Enhanced animations */
-@keyframes float {
-  0%, 100% {
-    transform: translateY(0px);
+  /* Small circular icon button. */
+  .btn-icon {
+    @apply inline-flex h-11 w-11 items-center justify-center rounded-full
+           border border-ink/20 text-ink transition-colors duration-300
+           hover:border-ink hover:bg-ink hover:text-floral;
   }
-  50% {
-    transform: translateY(-20px);
+
+  /* Text button with a rule that draws in on hover. */
+  .btn-text {
+    @apply relative inline-flex items-center gap-1.5 text-sm font-medium
+           text-ink transition-opacity duration-300 hover:opacity-60;
   }
-}
 
-@keyframes pulse-glow {
-  0%, 100% {
-    box-shadow: 0 0 20px rgba(59, 130, 246, 0.5);
+  .btn-text::after {
+    content: "";
+    @apply absolute -bottom-0.5 left-0 h-px w-full bg-ink/40;
   }
-  50% {
-    box-shadow: 0 0 40px rgba(59, 130, 246, 0.8);
+
+  /* ---------- Surfaces -------------------------------------------------- */
+
+  /* Cards are defined by a hairline, not a fill — no third colour needed. */
+  .card {
+    @apply relative rounded-2xl border border-ink/15 bg-floral
+           transition-[border-color,transform] duration-300
+           hover:-translate-y-1 hover:border-ink/45;
   }
-}
 
-@keyframes gradient-shift {
-  0% {
-    background-position: 0% 50%;
+  .card-flat {
+    @apply relative rounded-2xl border border-ink/15 bg-floral;
   }
-  50% {
-    background-position: 100% 50%;
+
+  /* Inverted surface: the only place ink becomes a ground. */
+  .card-invert {
+    @apply relative rounded-2xl border border-ink bg-ink text-floral;
   }
-  100% {
-    background-position: 0% 50%;
+
+  /* ---------- Chips / tags --------------------------------------------- */
+
+  .chip {
+    @apply inline-flex items-center rounded-full border border-ink/20
+           px-3 py-1 text-xs font-medium tracking-wide text-ink/70
+           transition-colors duration-300;
   }
-}
 
-.animate-float {
-  animation: float 6s ease-in-out infinite;
-}
-
-.animate-pulse-glow {
-  animation: pulse-glow 2s ease-in-out infinite;
-}
-
-.animate-gradient {
-  background-size: 200% 200%;
-  animation: gradient-shift 3s ease infinite;
-}
-
-/* Glass morphism effect */
-.glass {
-  background: rgba(17, 24, 39, 0.7);
-  backdrop-filter: blur(10px);
-  border: 1px solid rgba(255, 255, 255, 0.1);
-}
-
-/* Enhanced hover effects */
-.hover-lift {
-  transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
-}
-
-.hover-lift:hover {
-  transform: translateY(-8px) scale(1.02);
-  box-shadow: 0 20px 40px rgba(59, 130, 246, 0.3);
-}
-
-/* Text gradient effects */
-.text-gradient {
-  background: linear-gradient(135deg, #667eea 0%, #764ba2 25%, #f093fb 50%, #667eea 100%);
-  background-size: 200% 200%;
-  -webkit-background-clip: text;
-  -webkit-text-fill-color: transparent;
-  background-clip: text;
-  animation: gradient-shift 3s ease infinite;
-}
-
-/* Particle background effect */
-.particles {
-  position: absolute;
-  top: 0;
-  left: 0;
-  width: 100%;
-  height: 100%;
-  overflow: hidden;
-  pointer-events: none;
-}
-
-.particle {
-  position: absolute;
-  width: 4px;
-  height: 4px;
-  background: rgba(59, 130, 246, 0.5);
-  border-radius: 50%;
-  animation: float-up 10s linear infinite;
-}
-
-@keyframes float-up {
-  0% {
-    transform: translateY(100vh) rotate(0deg);
-    opacity: 0;
+  .chip-interactive {
+    @apply inline-flex items-center rounded-full border border-ink/20
+           px-3 py-1 text-xs font-medium tracking-wide text-ink/70
+           transition-colors duration-300
+           hover:border-ink hover:bg-ink hover:text-floral;
   }
-  10% {
-    opacity: 1;
+
+  .chip-solid {
+    @apply inline-flex items-center rounded-full bg-ink px-3 py-1
+           text-xs font-medium tracking-wide text-floral;
   }
-  90% {
-    opacity: 1;
+
+  /* ---------- Navigation ------------------------------------------------ */
+
+  .nav-link {
+    @apply relative py-1 text-sm font-medium text-ink/60
+           transition-colors duration-300 hover:text-ink;
   }
-  100% {
-    transform: translateY(-100vh) rotate(720deg);
-    opacity: 0;
+
+  .nav-link::after {
+    content: "";
+    @apply absolute bottom-0 left-0 h-px w-0 bg-ink transition-[width] duration-300;
+  }
+
+  .nav-link:hover::after,
+  .nav-link--active::after {
+    @apply w-full;
+  }
+
+  .nav-link--active {
+    @apply text-ink;
+  }
+
+  /* ---------- Media ----------------------------------------------------- */
+
+  /* Screenshots are desaturated so imagery never introduces a third colour. */
+  .media {
+    @apply relative overflow-hidden bg-ink/5;
+  }
+
+  .media img {
+    @apply h-full w-full object-cover grayscale contrast-[1.08]
+           transition-transform duration-[700ms] ease-ease;
+  }
+
+  .group:hover .media img {
+    @apply scale-[1.04];
   }
 }
 
+@layer utilities {
+  /* Faint ink dot-grid: texture without a third colour. */
+  .bg-dots {
+    background-image: radial-gradient(rgb(var(--ink) / 0.16) 1px, transparent 1px);
+    background-size: 22px 22px;
+  }
+
+  /* Fades a texture or edge back into the floral ground. */
+  .mask-fade-b {
+    mask-image: linear-gradient(to bottom, black, transparent);
+    -webkit-mask-image: linear-gradient(to bottom, black, transparent);
+  }
+
+  .mask-fade-r {
+    mask-image: linear-gradient(to right, transparent, black 12%, black 88%, transparent);
+    -webkit-mask-image: linear-gradient(to right, transparent, black 12%, black 88%, transparent);
+  }
+
+  .line-clamp-2 {
+    display: -webkit-box;
+    -webkit-line-clamp: 2;
+    -webkit-box-orient: vertical;
+    overflow: hidden;
+  }
+
+  .line-clamp-3 {
+    display: -webkit-box;
+    -webkit-line-clamp: 3;
+    -webkit-box-orient: vertical;
+    overflow: hidden;
+  }
+}
+
+/* Respect users who ask for less motion. */
+@media (prefers-reduced-motion: reduce) {
+  html {
+    scroll-behavior: auto;
+  }
+  *,
+  *::before,
+  *::after {
+    animation-duration: 0.01ms !important;
+    animation-iteration-count: 1 !important;
+    transition-duration: 0.01ms !important;
+  }
+}

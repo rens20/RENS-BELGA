@@ -1,47 +1,35 @@
-import { useState } from 'react';
-import AboutMe from "./components/AboutMe";
-// import Contact from "./components/Contact";
 import Header from "./components/Header";
 import Home from "./components/Home";
 import Experience from "./components/Experience";
+import AboutMe from "./components/AboutMe";
 import Projects from "./components/Project";
-import backgroundImage from './assets/Home-bg.jpg'
+import Footer from "./components/Footer";
 
 function App() {
-  const [isMenuOpen, setMenuOpen] = useState(false);
-
-  const toggleMenu = () => {
-    setMenuOpen(!isMenuOpen);
-  };
-
   return (
-    <>
+    <div className="min-h-screen bg-floral text-ink">
       <Header />
-      <div
-        id="home"
-        style={{
-          backgroundImage: `url(${backgroundImage})`,
-          backgroundSize: 'cover',
-          backgroundPosition: 'center',
-          backgroundRepeat: 'no-repeat',
-        }}
-      ></div>
-      <div id="home">
-        <Home />
-      </div>
-      <div id="experience">
-        <Experience />
-      </div>
-      <div id="about">
-        <AboutMe />
-      </div>
-      <div id="projects">
-        <Projects />
-      </div>
-      {/* <div id="contact">
-        <Contact />
-      </div> */}
-    </>
+
+      <main>
+        <section id="home">
+          <Home />
+        </section>
+
+        <section id="experience">
+          <Experience />
+        </section>
+
+        <section id="about">
+          <AboutMe />
+        </section>
+
+        <section id="projects">
+          <Projects />
+        </section>
+      </main>
+
+      <Footer />
+    </div>
   );
 }
 
